@@ -14,29 +14,6 @@
 # dependencies
 /node_modules
 
-# dependencies - exclude specific files used for overriding config
-!/node_modules
-/node_modules/*
-
-!/node_modules/@schematics
-/node_modules/@schematics/angular/*
-!/node_modules/@schematics/angular/component
-/node_modules/@schematics/angular/component/*
-!/node_modules/@schematics/angular/component/files
-/node_modules/@schematics/angular/component/files/*/*/*
-!/node_modules/@schematics/angular/component/files/*/*/*.pug
-!/node_modules/@schematics/angular/component/files/*/*/*.component.ts
-
-!/node_modules/@angular
-/node_modules/@angular/*
-!/node_modules/@angular/cli
-/node_modules/@angular/cli/*
-!/node_modules/@angular/cli/models
-/node_modules/@angular/cli/models/*
-!/node_modules/@angular/cli/models/webpack-configs/
-/node_modules/@angular/cli/models/webpack-configs/*
-!/node_modules/@angular/cli/models/webpack-configs/common.js
-
 # IDEs and editors
 /.idea
 .project
