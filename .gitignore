@@ -7,7 +7,10 @@
 /out-tsc
 
 # dependencies
-/node_modules
+# /node_modules
+/node_modules/**
+!/node_modules/@schematics/angular/component/files
+!/node_modules/@angular/cli/models/webpack-configs/common.js
 
 # IDEs and editors
 /.idea
