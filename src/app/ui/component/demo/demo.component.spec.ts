@@ -7,10 +7,9 @@ import { DataCallService } from '../../../service/data-call/data-call.service';
 
 describe('DemoComponent', () => {
     const mockedJson = {txt: 'json-data'};
-    const mockedJsonp = {txt: 'jsonp-data'};
     const mockedDataCallServ = {
         getJsonData: () => Promise.resolve(mockedJson),
-        getJsonpData: () => Promise.resolve(mockedJsonp)
+        getJsonpData: () => Promise.resolve(mockedJson)
     };
 
     let cmpInst: DemoComponent;
@@ -52,7 +51,7 @@ describe('DemoComponent', () => {
     it('should assign `jsonpProp` property with jsonp data at ngOnInit', done => {
         spyJsonp.calls.mostRecent().returnValue.then(() => {
             cmpFixture.detectChanges();
-            expect(cmpInst.jsonpProp).toBe(mockedJsonp);
+            expect(cmpInst.jsonpProp).toBe(mockedJson);
             done();
         });
     });
