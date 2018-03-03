@@ -11,9 +11,9 @@
 2. Install Homebrew
 3. Install Watchman in Terminal (for monitoring file changes): `brew install watchman`
 4. Install Typescript & CLI in Terminal: `npm install -g @angular/cli typescript`
-5. Under Project Root, install Jade/Pug in the Terminal: `npm install --save-dev pug pug-html-loader`
-6. Under Project Root, Install the dependencies in the Terminal: `npm install`
-7. Copy & Paste the files contained in `node_modules_replace` to `node_modules` folder
+5. Under Project Root, install Jade/Pug in Terminal: `npm install --save-dev pug pug-html-loader`
+6. Under Project Root, Install the dependencies in Terminal: `npm install`
+7. Copy the folders inside `node_modules_replace` & Paste it in `node_modules` folder
 
 
 ### CLI Command
