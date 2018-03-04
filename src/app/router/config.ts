@@ -21,7 +21,12 @@ export const ROUTES_CONFIG: Routes = [
         resolve: [ DataCallResolverService ]
     },
     {
+        path: 'test4/:id',
+        component: Viewtest1Component
+    },
+    {
         path: '**',
+        redirectTo: '',
         component: Viewtest1Component
     }
 ];

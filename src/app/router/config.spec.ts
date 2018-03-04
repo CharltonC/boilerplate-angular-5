@@ -31,6 +31,7 @@ describe('Router Config', () => {
                 { provide: DataCallService, useValue: mockedDataCallService },
                 DataCallResolverService
             ],
+            // View Container & View Components
             declarations: [
                 AppComponent,
                 Viewtest1Component,
@@ -68,7 +69,7 @@ describe('Router Config', () => {
     });
 
     it('should redirect to home page', (done) => {
-        router.navigateByUrl('/lorem sum').then(() => {
+        router.navigateByUrl('/loremsum').then(() => {
             cmpFixture.detectChanges();
             const currRoute = activatedRoute.snapshot.firstChild;
 
@@ -91,6 +92,17 @@ describe('Router Config', () => {
         });
     });
 
+    it('should navigate to path "test2" when matching anchor is clicked', fakeAsync(() => {
+        cmpTplDivElem.querySelector('#test2').click();
+        cmpFixture.whenStable().then(() => {
+            cmpFixture.detectChanges();
+            const currRoute = activatedRoute.snapshot.firstChild;
+            expect(location.path()).toBe('/test2');
+            expect(currRoute.component).toBe(Viewtest2Component);
+            expect(cmpTplDivElem.textContent).toContain('viewtest2 works!');
+        });
+    }));
+
     it('should navigate to path "test3" with resolver', (done) => {
         spyOn(dataCallResolverService, 'resolve').and.callThrough();
         // there is NO NEED to call dataCallResolverService.resolve() here becoz router.navigate alreadys trigger the call
@@ -103,6 +115,26 @@ describe('Router Config', () => {
             expect(rtnVal).toBe(mockedRtnPromise);
             expect(arg1).toBe(activatedRoute.snapshot.firstChild);
             expect(arg2).toBe(router.routerState.snapshot);
+            done();
+        });
+    });
+
+    it('should navigate to path "test4" with Param', (done) => {
+        const path = '/test4',
+            pathParam = 'something',
+            queryParam = { queryParams: {id: '123'} };
+
+        // equivalent: router.navigateByUrl('/test4/something?id=123').then(...)
+        // this won't work: router.navigateByUrl('/test4/something', queryParam).then(...)
+        router.navigate([path, pathParam], queryParam).then(() => {
+            cmpFixture.detectChanges();
+            const currRoute = activatedRoute.snapshot.firstChild;
+
+            expect(location.path()).toBe('/test4/something?id=123');
+            expect(currRoute.paramMap.get('id')).toBe(pathParam);
+            expect(currRoute.queryParamMap.get('id')).toBe('123');
+            expect(currRoute.component).toBe(Viewtest1Component);
+            expect(cmpTplDivElem.textContent).toContain('viewtest1 works!');
             done();
         });
     });
