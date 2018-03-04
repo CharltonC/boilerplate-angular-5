@@ -13,6 +13,7 @@ import { Viewtest2Component } from './ui/view/viewtest2/viewtest2.component';
 import { Viewtest3Component } from './ui/view/viewtest3/viewtest3.component';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './ui/component/demo/demo.component';
+import { Demo2Component } from './ui/component/demo2/demo2.component';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { DemoComponent } from './ui/component/demo/demo.component';
         DemoComponent,
         Viewtest1Component,
         Viewtest2Component,
-        Viewtest3Component
+        Viewtest3Component,
+        Demo2Component
     ],
     bootstrap: [ AppComponent ]
 })

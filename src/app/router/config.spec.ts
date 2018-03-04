@@ -125,7 +125,6 @@ describe('Router Config', () => {
             queryParam = { queryParams: {id: '123'} };
 
         // equivalent: router.navigateByUrl('/test4/something?id=123').then(...)
-        // this won't work: router.navigateByUrl('/test4/something', queryParam).then(...)
         router.navigate([path, pathParam], queryParam).then(() => {
             cmpFixture.detectChanges();
             const currRoute = activatedRoute.snapshot.firstChild;
