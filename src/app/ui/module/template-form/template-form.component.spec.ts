@@ -86,12 +86,44 @@ describe('TemplateFormComponent', () => {
         });
     }));
 
+    // Approach 1 - works
     it('Text Input should have error When required Text Input contains string "abc" string', async(() => {
         formModel.demoInput = '123abc';
         cmpFixture.detectChanges();
         cmpFixture.whenStable().then(() => {
             expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
         });
+    }));
+
+    // Approach 2 - works
+    it('Text Input should have error When required Text Input contains string "abc" string', async(() => {
+        cmpFixture.whenStable().then(() => {
+            // must have .nativeElement, else wont work (e.g. via `querySelector`)
+            const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
+            inputElem1.value = '123abc';                    // works
+            // formModel.demoInput = '123abc';              // wont work
+            inputElem1.dispatchEvent(new Event('input'));   // required
+            cmpFixture.detectChanges();                     // required
+            expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
+        });
+    }));
+
+    // Approach 3 - doesnt work
+    it('Text Input should have error When required Text Input contains string "abc" string', fakeAsync(() => {
+        // formModel.demoInput = '123abc';
+        // tick();
+        // cmpFixture.detectChanges();
+        // debugger;
+        // expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
+
+        // or
+
+        // const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
+        // inputElem1.value = '123abc';
+        // inputElem1.dispatchEvent(new Event('input'));
+        // cmpFixture.detectChanges();
+        // tick();
+        // expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
     }));
 
     it('Form & Text Input should be invalid when required Text Input becomes empty', async(() => {
