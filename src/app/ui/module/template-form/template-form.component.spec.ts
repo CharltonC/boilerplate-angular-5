@@ -100,10 +100,12 @@ describe('TemplateFormComponent', () => {
         cmpFixture.whenStable().then(() => {
             // must have .nativeElement, else wont work (e.g. via `querySelector`)
             const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
+
             inputElem1.value = '123abc';                    // works
             // formModel.demoInput = '123abc';              // wont work
             inputElem1.dispatchEvent(new Event('input'));   // required
             cmpFixture.detectChanges();                     // required
+
             expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
         });
     }));

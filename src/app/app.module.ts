@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ROUTES_CONFIG } from './router/config';
 
@@ -20,7 +20,10 @@ import { Demo2Component } from './ui/component/demo2/demo2.component';
 
 import { TemplateFormComponent } from './ui/module/template-form/template-form.component';
 import { ReactiveFormComponent } from './ui/module/reactive-form/reactive-form.component';
+
 import { DemoInputValidatorDirective } from './directive/demo-input-validator/demo-input-validator.directive';
+import { DemoPipe } from './pipe/demo/demo.pipe';
+
 
 @NgModule({
     imports: [
@@ -29,7 +32,8 @@ import { DemoInputValidatorDirective } from './directive/demo-input-validator/de
         RouterModule.forRoot(ROUTES_CONFIG),
         HttpClientModule,
         HttpClientJsonpModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         DataCallService,
@@ -38,14 +42,15 @@ import { DemoInputValidatorDirective } from './directive/demo-input-validator/de
     ],
     declarations: [
         AppComponent,
-        DemoComponent,
         Viewtest1Component,
         Viewtest2Component,
         Viewtest3Component,
+        DemoComponent,
         Demo2Component,
         TemplateFormComponent,
         ReactiveFormComponent,
-        DemoInputValidatorDirective
+        DemoInputValidatorDirective,
+        DemoPipe
     ],
     bootstrap: [ AppComponent ]
 })

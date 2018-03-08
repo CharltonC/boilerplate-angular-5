@@ -1,57 +1,27 @@
 form(novalidate, #fmGrpInst="ngForm", (ngSubmit)="onSubmit(fmGrpInst)")
-    p(*ngIf="fmGrpInst.controls.demoInput?.invalid", style="color:red")
-        | invalid
+    h2 template driven form demo
+    p(*ngIf="fmGrpInst.controls.demoInput?.invalid", style="color:red") invalid
     button(type="submit") submit
     div
         label(for="input-1")
             span input1
-            input(
-                type="text",
-                required,
-                id="input-1",
-                name="demoInput",
-                appDemoInputValidator,
-                [(ngModel)]="formModel.demoInput")
+            input(type="text", required, id="input-1", name="demoInput", appDemoInputValidator, [(ngModel)]="formModel.demoInput")
     div
         label(for="rdo-1")
             span radio1
-            input(
-                type="radio",
-                id="rdo-1"
-                name="rdoGrp",
-                value="rdo1",
-                [(ngModel)]="formModel.demoRdoGrp")
+            input(type="radio", id="rdo-1", name="rdoGrp", value="rdo1", [(ngModel)]="formModel.demoRdoGrp")
         label(for="rdo-2")
             span radio2
-            input(
-                type="radio",
-                id="rdo-2",
-                name="rdoGrp",
-                value="rdo2",
-                [(ngModel)]="formModel.demoRdoGrp")
+            input(type="radio", id="rdo-2", name="rdoGrp", value="rdo2", [(ngModel)]="formModel.demoRdoGrp")
     div
         label(for="checkbox-1")
             span checkbox1
-            input(
-                type="checkbox",
-                required,
-                id="checkbox-1",
-                name="checkbox1",
-                [(ngModel)]="formModel.demoCheckboxGrp.one")
+            input(type="checkbox", required, id="checkbox-1", name="checkbox1", [(ngModel)]="formModel.demoCheckboxGrp.one")
         label(for="checkbox-2")
             span checkbox2
-            input(
-                type="checkbox",
-                required,
-                id="checkbox-2",
-                name="checkbox2",
-                [(ngModel)]="formModel.demoCheckboxGrp.two")
+            input(type="checkbox", required, id="checkbox-2", name="checkbox2", [(ngModel)]="formModel.demoCheckboxGrp.two")
     div
         label(for="select-1")
-        select(
-            required,
-            id="select-1",
-            name="select1",
-            [(ngModel)]="formModel.demoSelect")
+        select(required, id="select-1", name="select1", [(ngModel)]="formModel.demoSelect")
             option(value="one") one
             option(value="two") two

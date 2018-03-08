@@ -1,1 +1,32 @@
-p reactive-form works!
+form(novalidate, [formGroup]="fmGrpInst", (onSubmit)="fmGrpInst.value")
+    h2 reactive form demo
+    button(type="submit") submit
+    fieldset(formGroupName="grpCtrlName")
+        label(for="reactive-input-1")
+            span text input
+            input(type="text", id="reactive-input-1", required, formControlName="reactiveInputCtrl1")
+        label(for="reactive-input-2")
+            span text input
+            input(type="text", id="reactive-input-2", required, formControlName="reactiveInputCtrl2")
+    label(for="reactive-input-3")
+        span text input
+        input(type="text", id="reactive-input-3", required, formControlName="reactiveInputCtrl3")
+    div
+        label(for="reactive-rdo-1")
+            span radio1
+            input(type="radio", id="reactive-rdo-1", value="reactive-rdo1", formControlName="reactiveRdoGrp")
+        label(for="reactive-rdo-2")
+            span radio2
+            input(type="radio", id="reactive-rdo-2", value="reactive-rdo2", formControlName="reactiveRdoGrp")
+    div
+        label(for="reactive-checkbox-1")
+            span checkbox1
+            input(type="checkbox", required, id="reactive-checkbox-1", formControlName="reactiveCheckbox1")
+        label(for="reactive-checkbox-2")
+            span checkbox2
+            input(type="checkbox", required, id="reactive-checkbox-2", formControlName="reactiveCheckbox2")
+    div
+        label(for="select-1")
+        select(required, id="reactive-select-1", formControlName="reactiveSelect")
+            option(value="one") one
+            option(value="two") two
