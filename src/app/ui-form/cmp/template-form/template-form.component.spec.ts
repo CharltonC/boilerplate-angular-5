@@ -152,7 +152,7 @@ describe('TemplateFormComponent', () => {
     });
 
     describe('Select dropdown', () => {
-        it('should be update selected option in view when model value changes', async(() => {
+        it('should update selected option in view when model value changes', async(() => {
             formModel.demoSelect = 'one';
             cmpFixture.detectChanges();
             cmpFixture.whenStable().then(() => {

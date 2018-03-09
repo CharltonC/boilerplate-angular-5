@@ -29,9 +29,11 @@ describe('ReactiveFormComponent', () => {
         cmpFixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(cmpInst).toBeTruthy();
-        expect(fmGrp).toBeTruthy();
+    describe('Form in general', () => {
+        it('should create', () => {
+            expect(cmpInst).toBeTruthy();
+            expect(fmGrp).toBeTruthy();
+        });
     });
 
     describe('text input group', () => {
