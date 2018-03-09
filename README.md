@@ -13,7 +13,8 @@
 4. Install Typescript & CLI in Terminal: `npm install -g @angular/cli typescript`
 5. Under Project Root, install Jade/Pug in Terminal: `npm install --save-dev pug pug-html-loader`
 6. Under Project Root, Install the dependencies in Terminal: `npm install`
-7. Copy the folders inside `node_modules_replace` & Paste it in `node_modules` folder
+7. Copy the folders inside `node_modules_replace` & Paste it in `node_modules` folder: `cp -a node_modules_replace/. node_modules/`
+These files are used when generating the Angular "Entity" files. It contains the the reformatted 4 space tab and adjusted jade/pug template files.
 
 
 ### CLI Command
