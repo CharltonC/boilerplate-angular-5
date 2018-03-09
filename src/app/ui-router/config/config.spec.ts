@@ -5,10 +5,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 
 import { ROUTES_CONFIG } from './config';
-import { DataCallService } from '../../../service/data-call/data-call.service';
+import { DataCallService } from '../../service/data-call/data-call.service';
 import { DataCallResolverService } from '../guard/data-call-resolver/data-call-resolver.service';
 
-import { AppComponent } from '../../../app.component';
+import { AppComponent } from '../../app.component';
 import { Viewtest1Component } from '../view/viewtest1/viewtest1.component';
 import { Viewtest2Component } from '../view/viewtest2/viewtest2.component';
 import { Viewtest3Component } from '../view/viewtest3/viewtest3.component';

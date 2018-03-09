@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataCallService } from '../../../../service/data-call/data-call.service';
+import { DataCallService } from '../../../service/data-call/data-call.service';
 
 @Component({
     selector: 'app-demo',
