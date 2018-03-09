@@ -2,10 +2,9 @@ import { async, ComponentFixture, TestBed, fakeAsync, flush, tick, flushMicrotas
 import { FormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { FormModelService } from '../../../service/form-model/form-model.service';
-
+import { FormModelService } from '../../model/form-model/form-model.service';
+import { DemoInputValidatorDirective } from '../../validator/demo-directive/demo-input-validator.directive';
 import { TemplateFormComponent } from './template-form.component';
-import { DemoInputValidatorDirective } from '../../../directive/demo-input-validator/demo-input-validator.directive';
 
 describe('TemplateFormComponent', () => {
     let cmpFixture: ComponentFixture<TemplateFormComponent>;

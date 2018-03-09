@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
 
-import { demoValidatorFn } from '../../../form/validator/demo/demo';
+import { demoValidatorFn } from '../../validator/demo-fn/demo';
 
 @Component({
     selector: 'app-reactive-form',

@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule, HttpClientJsonpModule } from '@angular/co
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { DemoComponent } from './demo.component';
-import { DataCallService } from '../../../service/data-call/data-call.service';
+import { DataCallService } from '../../../../service/data-call/data-call.service';
 
 describe('DemoComponent', () => {
     const mockedJson = {txt: 'json-data'};

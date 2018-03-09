@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { DataCallService } from '../data-call/data-call.service';
+import { DataCallService } from '../../../../service/data-call/data-call.service';
 
 // 1. implements Resolve<rtnTypeInsidePromiseResolveOrObservableRtn>
 // 2. return promise in `resolve`

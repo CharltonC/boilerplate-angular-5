@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormModelService } from '../../../service/form-model/form-model.service';
+import { FormModelService } from '../../model/form-model/form-model.service';
 
 @Component({
     selector: 'app-template-form',
