@@ -12,7 +12,7 @@ describe('TemplateFormComponent', () => {
     let cmpHost, cmpTplElem, cmpInjector;
 
     let formModel: FormModelService;
-    let ngForm: NgForm;
+    let fmGrp: NgForm;
 
     let inputElem, rdoElem1, rdoElem2, checkboxElem1, checkboxElem2, selectElem, selectOptionChildrenElem, selectOptionChildElem1, selectOptionChildElem2;
 
@@ -37,7 +37,7 @@ describe('TemplateFormComponent', () => {
 
         // Service/Directives
         formModel = TestBed.get(FormModelService);
-        ngForm = cmpHost.children[0].injector.get(NgForm);      // Get the Injector of the child <form>
+        fmGrp = cmpHost.children[0].injector.get(NgForm);      // Get the Injector of the child <form>
 
         // Get Dom Elements
         inputElem = cmpTplElem.querySelector('#input-1');
@@ -54,94 +54,111 @@ describe('TemplateFormComponent', () => {
         cmpFixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(cmpInst).toBeTruthy();
+    describe('Form in general', () => {
+        it('should create', () => {
+            expect(cmpInst).toBeTruthy();
+        });
+
+        it('should contain default value in the view', async(() => {
+            cmpFixture.whenStable().then(() => {
+                cmpFixture.detectChanges();
+                expect(cmpInst.formModel).toBe(formModel);
+                expect(inputElem.value).toBe(formModel.demoInput);
+                expect(rdoElem1.checked).toBe(true);
+                expect(rdoElem2.checked).toBe(false);
+                expect(checkboxElem1.checked).toBe(true);
+                expect(checkboxElem2.checked).toBe(true);
+                expect(selectOptionChildElem1.selected).toBe(false);
+                expect(selectOptionChildElem2.selected).toBe(true);
+            });
+        }));
+
+        it('Form should be valid (based on the form model)', async(() => {
+            cmpFixture.whenStable().then(() => {
+                expect(fmGrp.control.valid).toBe(true);
+            });
+        }));
     });
 
-    it('should contain default value in the view', async(() => {
-        cmpFixture.whenStable().then(() => {
+    describe('text input 1', () => {
+        it('should not have error', async(() => {
+            cmpFixture.whenStable().then(() => {
+                expect(fmGrp.controls.demoInput.errors).toBeFalsy(true);
+            });
+        }));
+
+        /* Test Approach Variations */
+        // Approach 1 - works
+        it('should have error When required Text Input contains string "abc" string', async(() => {
+            formModel.demoInput = '123abc';
             cmpFixture.detectChanges();
-            expect(cmpInst.formModel).toBe(formModel);
-            expect(inputElem.value).toBe(formModel.demoInput);
-            expect(rdoElem1.checked).toBe(true);
-            expect(rdoElem2.checked).toBe(false);
-            expect(checkboxElem1.checked).toBe(true);
-            expect(checkboxElem2.checked).toBe(true);
-            expect(selectOptionChildElem1.selected).toBe(false);
-            expect(selectOptionChildElem2.selected).toBe(true);
-        });
-    }));
+            cmpFixture.whenStable().then(() => {
+                expect(fmGrp.controls.demoInput.errors.abc).toEqual(true);
+            });
+        }));
 
-    /* Validation */
-    it('Form should be valid (based on the form model)', async(() => {
-        cmpFixture.whenStable().then(() => {
-            expect(ngForm.control.valid).toBe(true);
-        });
-    }));
+        // Approach 2 - works
+        // it('should have error When required Text Input contains string "abc" string', async(() => {
+        //     cmpFixture.whenStable().then(() => {
+        //         // must have .nativeElement, else wont work (e.g. via `querySelector`)
+        //         const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
 
-    it('Text input should not have error', async(() => {
-        cmpFixture.whenStable().then(() => {
-            expect(ngForm.controls.demoInput.errors).toBeFalsy(true);
-        });
-    }));
+        //         inputElem1.value = '123abc';                    // works
+        //         // formModel.demoInput = '123abc';              // wont work
+        //         inputElem1.dispatchEvent(new Event('input'));   // required
+        //         cmpFixture.detectChanges();                     // required
 
-    // Approach 1 - works
-    it('Text Input should have error When required Text Input contains string "abc" string', async(() => {
-        formModel.demoInput = '123abc';
-        cmpFixture.detectChanges();
-        cmpFixture.whenStable().then(() => {
-            expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
-        });
-    }));
+        //         expect(fmGrp.controls.demoInput.errors.abc).toEqual(true);
+        //     });
+        // }));
 
-    // Approach 2 - works
-    it('Text Input should have error When required Text Input contains string "abc" string', async(() => {
-        cmpFixture.whenStable().then(() => {
-            // must have .nativeElement, else wont work (e.g. via `querySelector`)
-            const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
+        // Approach 3 - doesnt work
+        // it('should have error When required Text Input contains string "abc" string', fakeAsync(() => {
+            // formModel.demoInput = '123abc';
+            // tick();
+            // cmpFixture.detectChanges();
+            // debugger;
+            // expect(fmGrp.controls.demoInput.errors.abc).toEqual(true);
 
-            inputElem1.value = '123abc';                    // works
-            // formModel.demoInput = '123abc';              // wont work
-            inputElem1.dispatchEvent(new Event('input'));   // required
-            cmpFixture.detectChanges();                     // required
+            // or
 
-            expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
-        });
-    }));
+            // const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
+            // inputElem1.value = '123abc';
+            // inputElem1.dispatchEvent(new Event('input'));
+            // cmpFixture.detectChanges();
+            // tick();
+            // expect(fmGrp.controls.demoInput.errors.abc).toEqual(true);
+        // }));
 
-    // Approach 3 - doesnt work
-    it('Text Input should have error When required Text Input contains string "abc" string', fakeAsync(() => {
-        // formModel.demoInput = '123abc';
-        // tick();
-        // cmpFixture.detectChanges();
-        // debugger;
-        // expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
+        it('should be invalid when required Text Input becomes empty', async(() => {
+            formModel.demoInput = '';
+            cmpFixture.detectChanges();
+            cmpFixture.whenStable().then(() => {
+                expect(fmGrp.controls.demoInput.invalid).toBe(true);
+                expect(fmGrp.control.invalid).toBe(true);
+            });
+        }));
+    });
 
-        // or
+    describe('Checkbox 1', () => {
+        it('should be invalid when required Checkbox1 becomes unchecked', async(() => {
+            formModel.demoCheckboxGrp.one = false;
+            cmpFixture.detectChanges();
+            cmpFixture.whenStable().then(() => {
+                expect(fmGrp.controls.checkbox1.invalid).toBe(true);
+                expect(fmGrp.control.invalid).toBe(true);
+            });
+        }));
+    });
 
-        // const inputElem1 = cmpHost.query(By.css('#input-1')).nativeElement;
-        // inputElem1.value = '123abc';
-        // inputElem1.dispatchEvent(new Event('input'));
-        // cmpFixture.detectChanges();
-        // tick();
-        // expect(ngForm.controls.demoInput.errors.abc).toEqual(true);
-    }));
-
-    it('Form & Text Input should be invalid when required Text Input becomes empty', async(() => {
-        formModel.demoInput = '';
-        cmpFixture.detectChanges();
-        cmpFixture.whenStable().then(() => {
-            expect(ngForm.controls.demoInput.invalid).toBe(true);
-            expect(ngForm.control.invalid).toBe(true);
-        });
-    }));
-
-    it('Form & Checkbox1 should be invalid when required Checkbox1 becomes unchecked', async(() => {
-        formModel.demoCheckboxGrp.one = false;
-        cmpFixture.detectChanges();
-        cmpFixture.whenStable().then(() => {
-            expect(ngForm.controls.checkbox1.invalid).toBe(true);
-            expect(ngForm.control.invalid).toBe(true);
-        });
-    }));
+    describe('Select dropdown', () => {
+        it('should be update selected option in view when model value changes', async(() => {
+            formModel.demoSelect = 'one';
+            cmpFixture.detectChanges();
+            cmpFixture.whenStable().then(() => {
+                expect(fmGrp.controls.select1.value).toBe('one');
+                expect(selectOptionChildElem1.selected).toBe(true);
+            });
+        }));
+    });
 });
