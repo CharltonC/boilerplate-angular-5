@@ -16,6 +16,7 @@ import { Viewtest3Component } from './ui-router/view/viewtest3/viewtest3.compone
 import { FormModelService } from './ui-form/model/form-model/form-model.service';
 import { DemoInputValidatorDirective } from './ui-form/validator/demo-directive/demo-input-validator.directive';
 import { TemplateFormComponent } from './ui-form/cmp/template-form/template-form.component';
+import { FormGroupService } from './ui-form/model/form-group/form-group.service';
 import { ReactiveFormComponent } from './ui-form/cmp/reactive-form/reactive-form.component';
 
 // General Service
@@ -46,7 +47,8 @@ import { StructuralDirective } from './directive/structural/structural.directive
     providers: [
         DataCallService,
         DataCallResolverService,
-        FormModelService
+        FormModelService,
+        FormGroupService
     ],
     declarations: [
         AppComponent,

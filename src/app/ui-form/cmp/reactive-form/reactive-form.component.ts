@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
 
 import { demoValidatorFn } from '../../validator/demo-fn/demo';
+import { FormGroupService } from '../../model/form-group/form-group.service';
 
 @Component({
     selector: 'app-reactive-form',
@@ -16,18 +17,8 @@ export class ReactiveFormComponent implements OnInit {
 
     // Approach 2 (no need to instantiate + not require "name" html attr.)
     fmGrpInst: FormGroup;
-    constructor(public formBuilder: FormBuilder) {
-        this.fmGrpInst = this.formBuilder.group({
-            reactiveInputCtrl3: [ 'input def value 3' ],
-            reactiveRdoGrp: [ 'reactive-rdo2' ],
-            reactiveCheckbox1: [ true ],
-            reactiveCheckbox2: [ true ],
-            reactiveSelect: [ 'two' ],
-            grpCtrlName: this.formBuilder.group({
-                reactiveInputCtrl1: [ 'input def value 1', demoValidatorFn ],
-                reactiveInputCtrl2: [ 'input def value 2' ]
-            })
-        });
+    constructor(public formBuilder: FormBuilder, public fmGrp: FormGroupService) {
+        this.fmGrpInst = this.fmGrp.model;
     }
 
     ngOnInit() {

@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { ReactiveFormComponent } from './reactive-form.component';
+import { FormGroupService } from '../../model/form-group/form-group.service';
 
 describe('ReactiveFormComponent', () => {
     let cmpFixture: ComponentFixture<ReactiveFormComponent>;
@@ -15,6 +16,7 @@ describe('ReactiveFormComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ ReactiveFormsModule ],
+            providers: [ FormGroupService ],
             declarations: [ ReactiveFormComponent ]
         }).compileComponents();
     }));
