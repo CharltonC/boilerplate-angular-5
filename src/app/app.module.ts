@@ -25,9 +25,12 @@ import { DataCallService } from './service/data-call/data-call.service';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './ui-component/cmp/demo/demo.component';
 import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
+import { Demo3Component } from './ui-component/cmp/demo3/demo3.component';
 
 // General Pipe
 import { DemoPipe } from './pipe/demo/demo.pipe';
+import { AttributeDirective } from './directive/attribute/attribute.directive';
+import { StructuralDirective } from './directive/structural/structural.directive';
 
 
 @NgModule({
@@ -52,10 +55,13 @@ import { DemoPipe } from './pipe/demo/demo.pipe';
         Viewtest3Component,
         DemoComponent,
         Demo2Component,
+        Demo3Component,
         TemplateFormComponent,
         ReactiveFormComponent,
         DemoInputValidatorDirective,
-        DemoPipe
+        DemoPipe,
+        AttributeDirective,
+        StructuralDirective
     ],
     bootstrap: [ AppComponent ]
 })
