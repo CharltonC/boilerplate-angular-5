@@ -27,6 +27,7 @@ import { AppComponent } from './app.component';
 import { DemoComponent } from './ui-component/cmp/demo/demo.component';
 import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
 import { Demo3Component } from './ui-component/cmp/demo3/demo3.component';
+import { Demo4Component } from './ui-component/cmp/demo4/demo4.component';
 
 // General Pipe
 import { DemoPipe } from './pipe/demo/demo.pipe';
@@ -58,6 +59,7 @@ import { StructuralDirective } from './directive/structural/structural.directive
         DemoComponent,
         Demo2Component,
         Demo3Component,
+        Demo4Component,
         TemplateFormComponent,
         ReactiveFormComponent,
         DemoInputValidatorDirective,

@@ -14,8 +14,6 @@
 5. Under Project Root, install Jade/Pug in Terminal: `npm install --save-dev pug pug-html-loader`
 6. Under Project Root, Install the dependencies in Terminal: `npm install`
 7. Run the patch for the CLI: `npm run cli-patch`
-- this will Copy the folders inside `node_modules_replace` & Paste it in `node_modules` folder: `cp -r node_modules_replace/ node_modules/`
-- the copied files are used when generating the Angular "Entity" files. It contains the the reformatted 4 space tab and adjusted jade/pug template files.
 
 
 ### CLI Command
@@ -24,4 +22,8 @@
 - Unit test (Karma)                                   `ng test`
 - End-2-End Test (Protractor)                         `ng e2e`
 - Generating NG Entity, e.g.                          `ng generate <entity-type> <entity-name>`
-  where entity type can be one of the following `directive|pipe|service|class|guard|interface|enum|module`
+  where entity type can be one of the following: `directive|pipe|service|class|guard|interface|enum|module`
+
+### Folder Structure
+
+### Adding additional scripts
