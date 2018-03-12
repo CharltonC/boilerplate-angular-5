@@ -31,7 +31,7 @@ export class StructuralDirective {
         });
     }
 
-    // Two Additional passed value via `appStructuralDir="..., test:boundPropToPass"`
+    // Two Additional passed value via `appStructuralDir="..., ExtraPropToPass:bdProp1ToPass；TestPass: bdProp2ToPass"`
     @Input() set appStructuralDirExtraPropToPass(val) {}
     @Input() appStructuralDirTestPass: any;
 }
