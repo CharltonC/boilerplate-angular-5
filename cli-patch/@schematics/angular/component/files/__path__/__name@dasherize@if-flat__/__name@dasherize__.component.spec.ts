@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, DebugElement, Injector } from '@angular/core';
 
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
 
 describe('<%= classify(name) %>Component', () => {
-    let cmpFixture: ComponentFixture<<%= classify(name) %>Component >;
-    let cmpInst: <%= classify(name) %>Component;
-    let cmpHost,
-        cmpTplElem;
-        cmpInjector;
+    let cmpFixture: ComponentFixture<<%= classify(name) %>Component >,
+        cmpHost: DebugElement,
+        cmpInst: <%= classify(name) %>Component,
+        cmpInjector: Injector,
+        cmpTplElem: any;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -16,7 +16,8 @@ describe('<%= classify(name) %>Component', () => {
             // imports: [],
             // providers: [],
             declarations: [
-                <%= classify(name) %>Component
+                <%= classify(name) %>Component,
+                // <Any-directive-or-pipe-etc>
             ]
         }).compileComponents();
     }));
@@ -36,7 +37,7 @@ describe('<%= classify(name) %>Component', () => {
         // Populate Changes to the View (applying any directive)
         cmpFixture.detectChanges();
 
-        // Get the DOM after Changes are populated to the View & any directive has been applied to the Element
+        // Get the DOM (self & chidrene etc) after Changes are populated to the View & any directive/pipe/etc has been applied to the Element
         cmpTplElem = cmpHost.nativeElement;
     });
 
