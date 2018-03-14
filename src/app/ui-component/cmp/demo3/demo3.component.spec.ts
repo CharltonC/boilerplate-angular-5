@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Demo3Component } from './demo3.component';
 import { AttributeDirective } from '../../../directive/attribute/attribute.directive';
+import { DummyComponent } from '../dummy/dummy.component';
 
 describe('Demo3Component', () => {
     let cmpInst: Demo3Component;
@@ -14,7 +15,8 @@ describe('Demo3Component', () => {
         TestBed.configureTestingModule({
             declarations: [
                 Demo3Component,
-                AttributeDirective
+                AttributeDirective,
+                DummyComponent
             ]
         }).compileComponents();
     }));
@@ -32,6 +34,25 @@ describe('Demo3Component', () => {
         expect(cmpInst).toBeTruthy();
     });
 
+    describe('with nested component `<app-dummy>`', () => {
+        let dummyCmp,
+            paragraphElem;
+
+        beforeEach(() => {
+            dummyCmp = cmpHost.childNodes[0].childNodes[0].componentInstance;
+            paragraphElem = cmpTplElem.querySelector('p');
+        });
+
+        it('the nested component should be equal to the one from @ViewChild & @ViewChildren', () => {
+            expect(dummyCmp).toBe(cmpInst.dummyCmp);
+            expect(dummyCmp).toBe(cmpInst.dummyCmps.first);
+        });
+
+        it('should contain the text content of the nested component', () => {
+            expect(paragraphElem.textContent).toContain('dummy works!');
+        });
+    });
+
     describe('with attribute directive `appAttrDir`', () => {
         let attrDirective;
         let paragraphElem;
@@ -39,6 +60,14 @@ describe('Demo3Component', () => {
         beforeEach(() => {
             attrDirective = cmpHost.children[0].injector.get(AttributeDirective);
             paragraphElem = cmpTplElem.querySelector('p');
+        });
+
+        it('the nested directive from Injector should be equal to the one from @ViewChild & @ViewChildren', () => {
+            // `attrDirective` is same as the following:
+            // - `cmpInst.attrDir` if using @ViewChild(AttributeDirective) attrDir: AttributeDirective
+            // - `cmpInst.attrDirs[idx]` if using @ViewChildren(AttributeDirective) attrDirs: QueryList<AttributeDirective>
+            expect(attrDirective).toBe(cmpInst.attrDir);
+            expect(attrDirective).toBe(cmpInst.attrDirs.first);
         });
 
         it('should work have default background color style, title attribute and class name', () => {

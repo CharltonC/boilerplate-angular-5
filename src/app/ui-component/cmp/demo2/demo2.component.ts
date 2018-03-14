@@ -1,5 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
+/**
+ * Demo of Component's @Input & @Output Property
+ */
 @Component({
     selector: 'app-demo2',
     templateUrl: './demo2.component.pug',

@@ -24,6 +24,7 @@ import { DataCallService } from './service/data-call/data-call.service';
 
 // General Components
 import { AppComponent } from './app.component';
+import { DummyComponent } from './ui-component/cmp/dummy/dummy.component';
 import { DemoComponent } from './ui-component/cmp/demo/demo.component';
 import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
 import { Demo3Component } from './ui-component/cmp/demo3/demo3.component';
@@ -53,6 +54,7 @@ import { StructuralDirective } from './directive/structural/structural.directive
     ],
     declarations: [
         AppComponent,
+        DummyComponent,
         Viewtest1Component,
         Viewtest2Component,
         Viewtest3Component,
@@ -65,7 +67,7 @@ import { StructuralDirective } from './directive/structural/structural.directive
         DemoInputValidatorDirective,
         DemoPipe,
         AttributeDirective,
-        StructuralDirective
+        StructuralDirective,
     ],
     bootstrap: [ AppComponent ]
 })

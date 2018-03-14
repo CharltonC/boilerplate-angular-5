@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { DataCallService } from '../../../service/data-call/data-call.service';
 
+/**
+ * Demo of Component working with a Data Fetching Service (Async/Promise)
+ */
 @Component({
     selector: 'app-demo',
     templateUrl: './demo.component.pug',
