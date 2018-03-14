@@ -31,7 +31,15 @@ describe('Demo5Component', () => {
         cmpTplElem = cmpHost.nativeElement;
     });
 
-    it('should have both <app-demo5> and <app-dummy> components', () => {
+    it('should have DummyComponent available as property via @ViewChild', () => {
+        const demo5CmpHost = cmpHost.childNodes[0] as DebugElement,
+            demo5CmpInst = demo5CmpHost.componentInstance,
+            dummyCmpInst = demo5CmpHost.childNodes[0].componentInstance;
+
+        expect(demo5CmpInst.dummyCmp).toBe(dummyCmpInst);
+    });
+
+    it('should have both <app-demo5> and <app-dummy> elements in View', () => {
         const demo5Elems = cmpTplElem.querySelectorAll('app-demo5');
         expect(demo5Elems.length).toBe(1);
         expect(demo5Elems[0].querySelectorAll('app-dummy').length).toBe(1);
