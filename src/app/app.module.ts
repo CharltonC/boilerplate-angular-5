@@ -36,7 +36,7 @@ import { Demo5Component } from './ui-component/cmp/demo5/demo5.component';
 import { DemoPipe } from './pipe/demo/demo.pipe';
 import { AttributeDirective } from './directive/attribute/attribute.directive';
 import { StructuralDirective } from './directive/structural/structural.directive';
-
+import { ExportasDirective } from './directive/exportas/exportas.directive';
 
 
 @NgModule({
@@ -73,6 +73,7 @@ import { StructuralDirective } from './directive/structural/structural.directive
         DemoPipe,
         AttributeDirective,
         StructuralDirective,
+        ExportasDirective,
     ],
     bootstrap: [ AppComponent ]
 })
