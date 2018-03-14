@@ -11,6 +11,7 @@ describe('<%= classify(name) %>Component', () => {
         cmpTplElem: any;
 
     beforeEach(async(() => {
+        // Note `.compileComponents()` is for external html file only (not required for inline)
         TestBed.configureTestingModule({
             // schemas: [ NO_ERRORS_SCHEMA ],
             // imports: [],
