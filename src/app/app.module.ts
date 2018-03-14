@@ -25,15 +25,18 @@ import { DataCallService } from './service/data-call/data-call.service';
 // General Components
 import { AppComponent } from './app.component';
 import { DummyComponent } from './ui-component/cmp/dummy/dummy.component';
+import { DummyContainerComponent } from './ui-component/cmp/dummy-container/dummy-container.component';
 import { DemoComponent } from './ui-component/cmp/demo/demo.component';
 import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
 import { Demo3Component } from './ui-component/cmp/demo3/demo3.component';
 import { Demo4Component } from './ui-component/cmp/demo4/demo4.component';
+import { Demo5Component } from './ui-component/cmp/demo5/demo5.component';
 
 // General Pipe
 import { DemoPipe } from './pipe/demo/demo.pipe';
 import { AttributeDirective } from './directive/attribute/attribute.directive';
 import { StructuralDirective } from './directive/structural/structural.directive';
+
 
 
 @NgModule({
@@ -55,6 +58,7 @@ import { StructuralDirective } from './directive/structural/structural.directive
     declarations: [
         AppComponent,
         DummyComponent,
+        DummyContainerComponent,
         Viewtest1Component,
         Viewtest2Component,
         Viewtest3Component,
@@ -62,6 +66,7 @@ import { StructuralDirective } from './directive/structural/structural.directive
         Demo2Component,
         Demo3Component,
         Demo4Component,
+        Demo5Component,
         TemplateFormComponent,
         ReactiveFormComponent,
         DemoInputValidatorDirective,
