@@ -10,7 +10,7 @@
     - binding
     - event handler
     - @HostBinding, @HostListener
-    - @Input (passing data to component), @Output (custom event emitter)
+    - Input (passing data to component), Output (custom event emitter)
     - ngOnInit with data-call service
     - Access child component or directive in own template
     - Access passed component or directive (testing <ng-content>)
