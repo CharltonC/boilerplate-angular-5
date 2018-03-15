@@ -15,6 +15,18 @@
     - Access child component or directive in own template
     - Access passed component or directive (testing <ng-content>)
 
+* Directive
+    - custom validator (for template-driven form)
+    - attr. directive - fixed behavior (events, attr: style/attr/css class)
+    - structural directive
+    - export as
+
+* Service
+    - async data fetching
+
+* Pipe
+    - simple transform uppercase to lowercase
+
 * Router
     - 4 route types (normal, wildcard, specific, specific guard with data-call service)
     - navigating path
@@ -26,13 +38,6 @@
     - built-in validation & custom validation
     - model
 
-* Directive
-    - custom validator (for template-driven form)
-    - attr. directive - fixed behavior (events, attr: style/attr/css class)
-    - structural directive
-    - export as
-
-
 ### Setup
 1. Install Node 6.9.0 or higher
 2. Install Homebrew
@@ -42,7 +47,6 @@
 6. Under Project Root, Install the dependencies in Terminal: `npm install`
 7. Run the patch for the CLI: `npm run cli-patch`
 
-
 ### CLI Command
 - Development server (`http://localhost:4200/`)       `ng serve`
 - Build                                               `ng build --prod`
@@ -50,7 +54,6 @@
 - End-2-End Test (Protractor)                         `ng e2e`
 - Generating NG Entity, e.g.                          `ng generate <entity-type> <entity-name>`
   where entity type can be one of the following: `directive|pipe|service|class|guard|interface|enum|module`
-
 
 ### Folder Structure
     cli-patch/
