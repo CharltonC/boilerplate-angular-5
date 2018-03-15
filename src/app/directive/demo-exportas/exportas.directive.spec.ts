@@ -2,18 +2,18 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, DebugElement, Injector } from '@angular/core';
 
 import { ExportasDirective } from './exportas.directive';
-import { DummyComponent } from '../../ui-component/cmp/dummy/dummy.component';
+import { DummyComponent } from '../../test-util/dummy-cmp/dummy.component';
 
 describe('ExportasDirective', () => {
 
-    describe('Self', () => {
+    describe('Test by Itself', () => {
         it('should create an instance', () => {
             const directive = new ExportasDirective();
             expect(directive).toBeTruthy();
         });
     });
 
-    describe('with Component', () => {
+    describe('Test with Component', () => {
         let cmpFixture: ComponentFixture<DummyComponent>;
         let cmpInst: DummyComponent;
         let cmpHost: DebugElement,

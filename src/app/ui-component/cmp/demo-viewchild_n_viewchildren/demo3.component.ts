@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 
 import { DummyDirective } from '../../../test-util/dummy-directive/dummy.directive';
-import { DummyComponent } from '../dummy/dummy.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 /**
  * Demo of Component working with a nested Attribute Directive/Component, includes:

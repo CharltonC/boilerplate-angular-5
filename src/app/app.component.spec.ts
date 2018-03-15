@@ -2,7 +2,6 @@ import { TestBed, async } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
 
 describe('AppComponent', () => {
     let cmpFixture,
@@ -13,9 +12,7 @@ describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                AppComponent,
-                // for testing if exists as a child
-                Demo2Component
+                AppComponent
             ],
             // ignore when other components/directives etc are used inside the <app-root>
             schemas: [ NO_ERRORS_SCHEMA ]

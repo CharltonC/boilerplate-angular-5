@@ -1,6 +1,6 @@
 import { Component, OnInit, ContentChild, AfterViewInit, AfterContentInit, ElementRef } from '@angular/core';
 
-import { DummyComponent } from '../dummy/dummy.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 @Component({
     selector: 'app-demo5',

@@ -17,7 +17,7 @@ export class Demo2Component implements OnInit {
     constructor() {}
 
     ngOnInit() {
-        console.log(this.passedVal);
+        // console.log(this.passedVal);
     }
 
     onClick() {

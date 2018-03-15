@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, DebugElement, Injector } from '@angular/core';
 
 import { Demo5Component } from './demo5.component';
-import { DummyContainerComponent } from '../dummy-container/dummy-container.component';
-import { DummyComponent } from '../dummy/dummy.component';
+import { DummyContainerComponent } from '../../../test-util/dummy-cmp-container/dummy-container.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 describe('Demo5Component', () => {
     let cmpFixture: ComponentFixture<DummyContainerComponent>;
@@ -31,7 +31,7 @@ describe('Demo5Component', () => {
         cmpTplElem = cmpHost.nativeElement;
     });
 
-    it('should have DummyComponent available as property via @ViewChild', () => {
+    it('should have DummyComponent available as property via @ContentChild', () => {
         const demo5CmpHost = cmpHost.childNodes[0] as DebugElement,
             demo5CmpInst = demo5CmpHost.componentInstance,
             dummyCmpInst = demo5CmpHost.childNodes[0].componentInstance;

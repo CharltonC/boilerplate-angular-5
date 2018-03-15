@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed, fakeAsync, flush, tick, flushMicrotas
 import { FormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { FormModelService } from '../../model/form-model/form-model.service';
+import { FormModelService } from '../../model/demo-formmodel/form-model.service';
 import { DemoInputValidatorDirective } from '../../validator/demo-directive/demo-input-validator.directive';
 import { TemplateFormComponent } from './template-form.component';
 

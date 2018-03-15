@@ -9,7 +9,7 @@ describe('Demo2Component', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [Demo2Component]
+            declarations: [ Demo2Component ]
         }).compileComponents();
     }));
 
@@ -25,6 +25,15 @@ describe('Demo2Component', () => {
 
     it('should create', () => {
         expect(cmpInst).toBeTruthy();
+    });
+
+    it('should bind property values to view', () => {
+        const cmpChildElem = cmpTplDivElem.querySelector('p');
+        expect(cmpChildElem.textContent).toContain(cmpInst.boundProp);
+
+        cmpInst.boundProp = 'new default value bound prop';
+        cmpFixture.detectChanges();
+        expect(cmpChildElem.textContent).toContain(cmpInst.boundProp);
     });
 
     it('test event handler', () => {
