@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Demo3Component } from './demo3.component';
-import { AttributeDirective } from '../../../directive/attribute/attribute.directive';
+import { DummyDirective } from '../../../test-util/dummy-directive/dummy.directive';
 import { DummyComponent } from '../dummy/dummy.component';
 
 describe('Demo3Component', () => {
@@ -15,7 +15,7 @@ describe('Demo3Component', () => {
         TestBed.configureTestingModule({
             declarations: [
                 Demo3Component,
-                AttributeDirective,
+                DummyDirective,
                 DummyComponent
             ]
         }).compileComponents();
@@ -34,13 +34,13 @@ describe('Demo3Component', () => {
         expect(cmpInst).toBeTruthy();
     });
 
-    describe('with nested component `<app-dummy>`', () => {
+    describe('@ViewChild/@ViewChildren with nested DummyComponent in Template', () => {
         let dummyCmp,
             paragraphElem;
 
         beforeEach(() => {
-            dummyCmp = cmpHost.childNodes[0].childNodes[0].componentInstance;
-            paragraphElem = cmpTplElem.querySelector('p');
+            dummyCmp = cmpHost.childNodes[0].childNodes[1].componentInstance;
+            paragraphElem = cmpTplElem.querySelector('div');
         });
 
         it('the nested component should be equal to the one from @ViewChild & @ViewChildren', () => {
@@ -53,48 +53,12 @@ describe('Demo3Component', () => {
         });
     });
 
-    describe('with attribute directive `appAttrDir`', () => {
-        let attrDirective;
-        let paragraphElem;
-
-        beforeEach(() => {
-            attrDirective = cmpHost.children[0].injector.get(AttributeDirective);
-            paragraphElem = cmpTplElem.querySelector('p');
+    describe('@ViewChild/@ViewChildren with nested DummyDirective in Template', () => {
+        it('the nested directive should be equal to the one from @ViewChild & @ViewChildren', () => {
+            const dummyDirective = cmpHost.childNodes[0].injector.get(DummyDirective);
+            expect(cmpInst.dummyDirective).toBe(dummyDirective);
+            expect(cmpInst.dummyDirectives.first).toBe(dummyDirective);
         });
-
-        it('the nested directive from Injector should be equal to the one from @ViewChild & @ViewChildren', () => {
-            // `attrDirective` is same as the following:
-            // - `cmpInst.attrDir` if using @ViewChild(AttributeDirective) attrDir: AttributeDirective
-            // - `cmpInst.attrDirs[idx]` if using @ViewChildren(AttributeDirective) attrDirs: QueryList<AttributeDirective>
-            expect(attrDirective).toBe(cmpInst.attrDir);
-            expect(attrDirective).toBe(cmpInst.attrDirs.first);
-        });
-
-        it('should work have default background color style, title attribute and class name', () => {
-            expect(paragraphElem.style['background-color']).toBe('red');
-            expect(paragraphElem.title).toBe('demo attribute directive');
-            expect(/demo\-attr\-dir/.test(paragraphElem.className)).toBe(true);
-        });
-
-        it('should call the `onClick` handler when the 1st <p> is clicked', () => {
-            spyOn(attrDirective, 'onClick').and.callThrough();
-            paragraphElem.click();
-            cmpFixture.detectChanges();
-            expect(attrDirective.onClick).toHaveBeenCalled();
-        });
-
-        it('should update in Component View when Directive property values change', () => {
-            attrDirective.bgColor = 'blue';
-            attrDirective.title = 'new title';
-            attrDirective.clsName = false;
-            cmpFixture.detectChanges();
-
-            expect(paragraphElem.style['background-color']).toBe(attrDirective.bgColor);
-            expect(paragraphElem.title).toBe(attrDirective.title);
-            expect(/demo\-attr\-dir/.test(paragraphElem.className)).toBe(false);
-        });
-
     });
-
 
 });

@@ -24,8 +24,6 @@ import { DataCallService } from './service/data-call/data-call.service';
 
 // General Components
 import { AppComponent } from './app.component';
-import { DummyComponent } from './ui-component/cmp/dummy/dummy.component';
-import { DummyContainerComponent } from './ui-component/cmp/dummy-container/dummy-container.component';
 import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
 import { Demo3Component } from './ui-component/cmp/demo3/demo3.component';
 import { Demo4Component } from './ui-component/cmp/demo4/demo4.component';
@@ -36,6 +34,11 @@ import { DemoPipe } from './pipe/demo/demo.pipe';
 import { AttributeDirective } from './directive/attribute/attribute.directive';
 import { StructuralDirective } from './directive/structural/structural.directive';
 import { ExportasDirective } from './directive/exportas/exportas.directive';
+
+// Test used
+import { DummyComponent } from './ui-component/cmp/dummy/dummy.component';
+import { DummyContainerComponent } from './ui-component/cmp/dummy-container/dummy-container.component';
+import { DummyDirective } from './test-util/dummy-directive/dummy.directive';
 
 
 @NgModule({
@@ -56,8 +59,7 @@ import { ExportasDirective } from './directive/exportas/exportas.directive';
     ],
     declarations: [
         AppComponent,
-        DummyComponent,
-        DummyContainerComponent,
+
         Viewtest1Component,
         Viewtest2Component,
         Viewtest3Component,
@@ -72,6 +74,10 @@ import { ExportasDirective } from './directive/exportas/exportas.directive';
         AttributeDirective,
         StructuralDirective,
         ExportasDirective,
+
+        DummyDirective,
+        DummyComponent,
+        DummyContainerComponent,
     ],
     bootstrap: [ AppComponent ]
 })

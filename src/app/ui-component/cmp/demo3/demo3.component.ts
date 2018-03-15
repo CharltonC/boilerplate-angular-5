@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 
-import { AttributeDirective } from '../../../directive/attribute/attribute.directive';
+import { DummyDirective } from '../../../test-util/dummy-directive/dummy.directive';
 import { DummyComponent } from '../dummy/dummy.component';
 
 /**
@@ -17,14 +17,16 @@ import { DummyComponent } from '../dummy/dummy.component';
 export class Demo3Component implements AfterViewInit {
 
     // Get Child/Children Component or Directive used in its Template
-    @ViewChild(AttributeDirective) attrDir: AttributeDirective;
-    @ViewChildren(AttributeDirective) attrDirs: QueryList<AttributeDirective>;
+    @ViewChild(DummyDirective) dummyDirective: DummyDirective;
+    @ViewChildren(DummyDirective) dummyDirectives: QueryList<DummyDirective>;
     @ViewChild(DummyComponent) dummyCmp: DummyComponent;
     @ViewChildren(DummyComponent) dummyCmps: QueryList<DummyComponent>;
 
     // Access Child/Children Component or Directive here
     ngAfterViewInit() {
-        // console.log(this.attrDir);
-        // console.log(this.attrDirs);
+        // console.log(this.dummyDirective);
+        // console.log(this.dummyDirectives);
+        // console.log(this.dummyCmp);
+        // console.log(this.dummyCmps);
     }
 }
