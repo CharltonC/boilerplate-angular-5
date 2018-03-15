@@ -7,10 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Router
 import { ROUTES_CONFIG } from './ui-router/config/config';
-import { DataCallResolverService } from './ui-router/guard/data-call-resolver/data-call-resolver.service';
-import { Viewtest1Component } from './ui-router/view/viewtest1/viewtest1.component';
-import { Viewtest2Component } from './ui-router/view/viewtest2/viewtest2.component';
-import { Viewtest3Component } from './ui-router/view/viewtest3/viewtest3.component';
+import { DataCallResolverService } from './ui-router/guard/demo-datacall-resolver/data-call-resolver.service';
+import { Viewtest1Component } from './ui-router/view/demo-view1/viewtest1.component';
+import { Viewtest2Component } from './ui-router/view/demo-view2/viewtest2.component';
+import { Viewtest3Component } from './ui-router/view/demo-view3/viewtest3.component';
 
 // Form
 import { FormModelService } from './ui-form/model/demo-formmodel/form-model.service';

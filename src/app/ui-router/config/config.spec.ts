@@ -6,12 +6,12 @@ import { Location, APP_BASE_HREF } from '@angular/common';
 
 import { ROUTES_CONFIG } from './config';
 import { DataCallService } from '../../service/demo-datacall/data-call.service';
-import { DataCallResolverService } from '../guard/data-call-resolver/data-call-resolver.service';
+import { DataCallResolverService } from '../guard/demo-datacall-resolver/data-call-resolver.service';
 
 import { AppComponent } from '../../app.component';
-import { Viewtest1Component } from '../view/viewtest1/viewtest1.component';
-import { Viewtest2Component } from '../view/viewtest2/viewtest2.component';
-import { Viewtest3Component } from '../view/viewtest3/viewtest3.component';
+import { Viewtest1Component } from '../view/demo-view1/viewtest1.component';
+import { Viewtest2Component } from '../view/demo-view2/viewtest2.component';
+import { Viewtest3Component } from '../view/demo-view3/viewtest3.component';
 
 describe('Router Config', () => {
 
