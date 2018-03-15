@@ -1,4 +1,5 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { HttpClient, HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -9,21 +10,44 @@ import { DataCallService } from './data-call.service';
  * - DataCallService.getJsonpData is not tested here due to a Bug in Angular
  */
 describe('DataCallService', () => {
-    let dataCallServ, http, mockedBackend;
+    let dataCallServ;
 
-    beforeEach(() => {
+    // Mocked Component
+    @Component({
+        selector: 'app-demo',
+        template: '',
+    })
+    class MockedComponent implements OnInit {
+        jsonProp: object;
+        jsonpProp: object;
+        constructor(private dataCall: DataCallService) { }
+        ngOnInit() {
+            this.dataCall.getJsonData().then(data => {
+                this.jsonProp = data;
+            });
+            this.dataCall.getJsonpData().then(data => {
+                this.jsonpProp = data;
+            });
+        }
+    }
+
+    beforeEach(async(() => {
+        // Config Test
         TestBed.configureTestingModule({
             imports: [ HttpClientModule, HttpClientJsonpModule, HttpClientTestingModule ],
             providers: [ DataCallService, HttpClient ],
+            declarations: [ MockedComponent ]
         });
-        dataCallServ = TestBed.get(DataCallService);
-        http = TestBed.get(HttpClient);
-        mockedBackend = TestBed.get(HttpTestingController);
-    });
 
-    it('should be created', inject([DataCallService], (service: DataCallService) => {
-        expect(service).toBeTruthy();
+        // Get Service
+        dataCallServ = TestBed.get(DataCallService);
     }));
+
+    describe('Test by iteself', () => {
+        it('should be created', () => {
+            expect(dataCallServ).toBeTruthy();
+        });
+    });
 
     describe('Test returned data via Mocked Promise', () => {
         const mockedJsonData = { id: 1, name: 'john' };
@@ -46,6 +70,11 @@ describe('DataCallService', () => {
         const mockedUrl = 'http://lorem.sum';
         const mockedJsonpData = { id: 1, name: 'john' };
         const mockedFailErrMsg = 'CALL ERROR';
+        let mockedBackend;
+
+        beforeEach(() => {
+            mockedBackend = TestBed.get(HttpTestingController);
+        });
 
         afterEach(() => {
             mockedBackend.verify();
@@ -76,6 +105,40 @@ describe('DataCallService', () => {
 
             mockedReq.flush(mockedFailErrMsg, { status: 404, statusText: 'Not Found' });
             done();
+        });
+    });
+
+    describe('Test with Component and mocked Promise', () => {
+        let cmpFixture: ComponentFixture<MockedComponent>,
+            cmpInst: MockedComponent,
+            spyJson, spyJsonp;
+
+        const mockedJson = {txt: 'json-data'};
+
+        beforeEach(() => {
+            cmpFixture = TestBed.createComponent(MockedComponent);
+            cmpInst = cmpFixture.componentInstance;
+
+            spyJson = spyOn(dataCallServ, 'getJsonData').and.returnValue(Promise.resolve(mockedJson));
+            spyJsonp = spyOn(dataCallServ, 'getJsonpData').and.returnValue(Promise.resolve(mockedJson));
+
+            cmpFixture.detectChanges();
+        });
+
+        it('should assign `jsonProp` property with json data at ngOnInit', done => {
+            spyJson.calls.mostRecent().returnValue.then(() => {
+                cmpFixture.detectChanges();
+                expect(cmpInst.jsonProp).toBe(mockedJson);
+                done();
+            });
+        });
+
+        it('should assign `jsonpProp` property with jsonp data at ngOnInit', done => {
+            spyJsonp.calls.mostRecent().returnValue.then(() => {
+                cmpFixture.detectChanges();
+                expect(cmpInst.jsonpProp).toBe(mockedJson);
+                done();
+            });
         });
     });
 });

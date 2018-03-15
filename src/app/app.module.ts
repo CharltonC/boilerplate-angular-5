@@ -26,7 +26,6 @@ import { DataCallService } from './service/data-call/data-call.service';
 import { AppComponent } from './app.component';
 import { DummyComponent } from './ui-component/cmp/dummy/dummy.component';
 import { DummyContainerComponent } from './ui-component/cmp/dummy-container/dummy-container.component';
-import { DemoComponent } from './ui-component/cmp/demo/demo.component';
 import { Demo2Component } from './ui-component/cmp/demo2/demo2.component';
 import { Demo3Component } from './ui-component/cmp/demo3/demo3.component';
 import { Demo4Component } from './ui-component/cmp/demo4/demo4.component';
@@ -62,7 +61,6 @@ import { ExportasDirective } from './directive/exportas/exportas.directive';
         Viewtest1Component,
         Viewtest2Component,
         Viewtest3Component,
-        DemoComponent,
         Demo2Component,
         Demo3Component,
         Demo4Component,
