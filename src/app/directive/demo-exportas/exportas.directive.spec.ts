@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, DebugElement, Injector } from '@angular/core';
 
 import { ExportasDirective } from './exportas.directive';
-import { DummyComponent } from '../../test-util/dummy-cmp/dummy.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 describe('ExportasDirective', () => {
 

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { StructuralDirective } from './structural.directive';
-import { DummyComponent } from '../../test-util/dummy-cmp/dummy.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 describe('StructuralDirective', () => {
     describe('Test by Itself', () => {

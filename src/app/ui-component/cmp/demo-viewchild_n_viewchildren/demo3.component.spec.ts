@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Demo3Component } from './demo3.component';
-import { DummyDirective } from '../../../test-util/dummy-directive/dummy.directive';
-import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
+import { DummyDirective } from '../../../../test-util/dummy-directive/dummy.directive';
+import { DummyComponent } from '../../../../test-util/dummy-cmp/dummy.component';
 
 describe('Demo3Component', () => {
     let cmpInst: Demo3Component;

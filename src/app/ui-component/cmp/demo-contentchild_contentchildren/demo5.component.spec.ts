@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, DebugElement, Injector } from '@angular/core';
 
 import { Demo5Component } from './demo5.component';
-import { DummyContainerComponent } from '../../../test-util/dummy-cmp-container/dummy-container.component';
-import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
+import { DummyContainerComponent } from '../../../../test-util/dummy-cmp-container/dummy-container.component';
+import { DummyComponent } from '../../../../test-util/dummy-cmp/dummy.component';
 
 describe('Demo5Component', () => {
     let cmpFixture: ComponentFixture<DummyContainerComponent>;

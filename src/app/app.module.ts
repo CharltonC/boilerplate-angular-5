@@ -35,9 +35,9 @@ import { StructuralDirective } from './directive/demo-structural/structural.dire
 import { ExportasDirective } from './directive/demo-exportas/exportas.directive';
 
 // Test used
-import { DummyComponent } from './test-util/dummy-cmp/dummy.component';
-import { DummyContainerComponent } from './test-util/dummy-cmp-container/dummy-container.component';
-import { DummyDirective } from './test-util/dummy-directive/dummy.directive';
+import { DummyComponent } from '../test-util/dummy-cmp/dummy.component';
+import { DummyContainerComponent } from '../test-util/dummy-cmp-container/dummy-container.component';
+import { DummyDirective } from '../test-util/dummy-directive/dummy.directive';
 
 
 @NgModule({

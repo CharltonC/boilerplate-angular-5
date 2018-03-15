@@ -2,7 +2,7 @@ import { DebugElement } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AttributeDirective } from './attribute.directive';
-import { DummyComponent } from '../../test-util/dummy-cmp/dummy.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 describe('AttributeDirective', () => {
     let directive;

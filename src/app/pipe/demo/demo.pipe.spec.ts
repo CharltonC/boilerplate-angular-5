@@ -1,7 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
 import { DemoPipe } from './demo.pipe';
-import { DummyComponent } from '../../test-util/dummy-cmp/dummy.component';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
 
 describe('DemoPipe', () => {
     let pipe;
