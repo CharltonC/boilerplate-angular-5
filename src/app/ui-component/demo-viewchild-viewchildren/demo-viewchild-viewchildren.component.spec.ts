@@ -31,7 +31,7 @@ describe('Demo for Component with @ViewChild/@ViewChildren', () => {
     });
 
     describe('Test with nested Dummy Component in Template', () => {
-        it('the nested component should be same as the one from @ViewChild & @ViewChildren', () => {
+        it('should be able to access nested component from @ViewChild & @ViewChildren', () => {
             const dummyCmp = cmpHost.childNodes[0].childNodes[1].componentInstance;
             expect(cmpInst.dummyCmp).toBe(dummyCmp);
             expect(cmpInst.dummyCmps.first).toBe(dummyCmp);
@@ -44,7 +44,7 @@ describe('Demo for Component with @ViewChild/@ViewChildren', () => {
     });
 
     describe('Test with nested Dummy Directive in Template', () => {
-        it('the nested directive should be same as the one from @ViewChild & @ViewChildren', () => {
+        it('should be able to access the nested directive from @ViewChild & @ViewChildren', () => {
             const dummyDirective = cmpHost.childNodes[0].injector.get(DummyDirective);
             expect(cmpInst.dummyDirective).toBe(dummyDirective);
             expect(cmpInst.dummyDirectives.first).toBe(dummyDirective);

@@ -1,6 +1,6 @@
 import { DemoInputValidatorDirective } from './demo-as-directive.directive';
 
-describe('DemoInputValidatorDirective', () => {
+describe('Demo for Input Validator as a Directive', () => {
     let validator;
 
     beforeEach(() => {

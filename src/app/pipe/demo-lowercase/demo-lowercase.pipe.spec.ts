@@ -11,7 +11,7 @@ describe('Demo for Pipe', () => {
             pipe = new DemoLowercasePipe();
         });
 
-        it('create an instance', () => {
+        it('should create an instance', () => {
             expect(pipe).toBeTruthy();
         });
 
@@ -43,7 +43,7 @@ describe('Demo for Pipe', () => {
             cmpFixture.detectChanges();
         });
 
-        it('should contain converted lowercase `abc`', () => {
+        it('should contain converted lowercase `abc` in view', () => {
             expect(cmpTplElem.textContent).toContain('abc');
         });
     });

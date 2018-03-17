@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { DemoFormModelService } from './demo-formmodel.service';
 
-describe('DemoFormModelService', () => {
+describe('Demo for Form Model Service (Template-driven Form)', () => {
     let formModel;
 
     beforeEach(() => {

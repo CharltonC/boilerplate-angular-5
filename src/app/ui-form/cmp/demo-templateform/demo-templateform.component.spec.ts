@@ -73,7 +73,7 @@ describe('Demo for Template Driven Form Component', () => {
             });
         }));
 
-        it('Form should be valid (based on the form model)', async(() => {
+        it('should be valid bu default (based on the form model)', async(() => {
             cmpFixture.whenStable().then(() => {
                 expect(fmGrp.control.valid).toBe(true);
             });

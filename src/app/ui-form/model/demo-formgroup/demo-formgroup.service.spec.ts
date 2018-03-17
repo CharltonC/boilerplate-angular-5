@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 
 import { DemoFormGroupService } from './demo-formgroup.service';
 
-describe('DemoFormGroupService', () => {
+describe('Demo for FormGroup Model Service (Reactive Form)', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [ DemoFormGroupService, FormBuilder ]

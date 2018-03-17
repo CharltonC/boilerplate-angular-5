@@ -43,7 +43,7 @@ describe('Demo for Data Fetch Service', () => {
         dataCallServ = TestBed.get(DemoDataCallService);
     }));
 
-    describe('Test by iteself', () => {
+    describe('Test by Itself', () => {
         it('should be created', () => {
             expect(dataCallServ).toBeTruthy();
         });

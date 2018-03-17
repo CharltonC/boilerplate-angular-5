@@ -2,7 +2,7 @@ import { AbstractControl } from '@angular/forms';
 
 import { demoValidatorFn } from './demo-as-fn';
 
-describe('DemoInputValidatorDirective', () => {
+describe('Demo for Input Validator as a Function', () => {
     it('should return true if input control contains "abc" string', () => {
         const mockedCtrl = { value: 'abcd'} as AbstractControl;
         expect(demoValidatorFn(mockedCtrl)).toBeTruthy();

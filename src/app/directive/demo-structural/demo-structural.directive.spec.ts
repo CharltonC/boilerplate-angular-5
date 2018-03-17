@@ -69,7 +69,7 @@ describe('Demo for Structural Directive', () => {
             expect(structuralDirective.appDemoStructuralDirTestPass).toBe('lorem');
         });
 
-        it('the values passed to the directive should reflect in Component\'s Template View', () => {
+        it('should reflect in Component\'s Template View when the values passed to the directive', () => {
             expect(childrenElem.length).toBe(3);
             expect(childrenElem[0].textContent).toContain('ONE & 0');
         });

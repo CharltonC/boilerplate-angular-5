@@ -41,7 +41,7 @@ describe('Demo for Component with @ContentChild/@ContentChildren', () => {
         });
 
         describe('Test with passed Dummy Component', () => {
-            it('the passed component should be same as the one from @ContentChild/@ContentChildren', () => {
+            it('should pass component and accessible from @ContentChild/@ContentChildren', () => {
                 const dummyCmpInst = demo5CmpHost.childNodes[0].componentInstance;
                 expect(demo5CmpInst.dummyCmp).toBe(dummyCmpInst);
                 expect(demo5CmpInst.dummyCmps.first).toBe(dummyCmpInst);
@@ -55,7 +55,7 @@ describe('Demo for Component with @ContentChild/@ContentChildren', () => {
         });
 
         describe('Test with passed Dummy Directive', () => {
-            it('the passed directive should be same as the one from @ContentChild/@ContentChildren', () => {
+            it('should pass directive and accessible from @ContentChild/@ContentChildren', () => {
                 const dummyDir = demo5CmpHost.injector.get(DummyDirective);
                 expect(demo5CmpInst.dummyDir).toBe(dummyDir);
                 expect(demo5CmpInst.dummyDirs.first).toBe(dummyDir);

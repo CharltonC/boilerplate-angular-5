@@ -36,7 +36,7 @@ describe('Demo for Component with Binding, Event, @Input, @Output', () => {
         expect(cmpChildElem.textContent).toContain(cmpInst.boundProp);
     });
 
-    it('test event handler', () => {
+    it('should update property with Event Handler when <p> is clicked', () => {
         const cmpChildElem = cmpTplDivElem.querySelector('p');
         expect(cmpInst.boundProp).toBe('default1');
         cmpChildElem.click();
@@ -44,14 +44,14 @@ describe('Demo for Component with Binding, Event, @Input, @Output', () => {
         expect(cmpInst.boundProp).toBe('new default1');
     });
 
-    it('test input - Should be able to pass data to the component', () => {
+    it('should pass data to the component via @Input', () => {
         const passedVal = 'lorem sum';
         cmpInst.passedVal = passedVal;
         cmpFixture.detectChanges();
         expect(cmpTplDivElem.textContent).toContain(passedVal);
     });
 
-    it('test output - Should be able to emit custom event', () => {
+    it('should emit custom event via @Output', () => {
         const cmpChildElem = cmpTplDivElem.querySelector('span');
 
         // Subcribe to the Custom Event to see if it gets trigger, callback logic is just an example for easy testing here
