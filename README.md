@@ -72,7 +72,7 @@
     - More comprehensive code/comments for the Component Test/Spec file
 
 ### VisualStudio Code Editor Setup
-1. Go to Menu: Preference > Settings, in your user settings, make sure the settings has the following set:  
+* Go to Menu: Preference > Settings, in your user settings, make sure the settings has the following set:  
     ```
     {
         ...
@@ -82,10 +82,9 @@
         "[markdown]": {
             "files.trimTrailingWhitespace": false
         }
+        
     }
     ```
-2. 
-
 
 ### CLI Command
 * Development server (`http://localhost:4200/`):  
@@ -111,6 +110,10 @@
     - path name is relative to "src/app" folder
     - entity type can be one of the following:  
     `directive|pipe|service|class|guard|interface|enum|module`
+* Generate Documentation:  
+    ```
+    npm run doc
+    ```   
 
 ### Folder Structure
     cli-patch/
