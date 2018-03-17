@@ -44,7 +44,7 @@
 ### Setup (Mac based)
 1. Install Node 6.9.0 or higher
 2. Install Homebrew
-3. Install Watchman in Terminal (for monitoring file changes):
+3. Install Watchman in Terminal (for monitoring file changes):  
     ```
     brew install watchman
     ```
