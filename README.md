@@ -48,50 +48,53 @@
     ```
     brew install watchman
     ```
-4. Install Typescript & CLI in Terminal:
+4. Install Typescript & CLI in Terminal:  
     ```
     npm install -g @angular/cli typescript
     ```
-5. Under Project Root, install Jade/Pug in Terminal:
+5. Under Project Root, install Jade/Pug in Terminal:  
     ```
     npm install --save-dev pug pug-html-loader
     ```
-6. Under Project Root, Install the dependencies in Terminal:
+6. Under Project Root, Install the dependencies in Terminal:  
     ```
     npm install
     ```
-7. Run the patch for the CLI so that:
+7. Run the patch for the CLI:  
+    ```
+    npm run cli-patch
+    ```
+    so that:  
     - the Scss has sourcemap
     - the generated project files are formatted in 4 spaces instead of 2 spaces
     - Write Jade/Pug instead of Html
     - More comprehensive code/comments for the Component Test/Spec file
-    ```
-    npm run cli-patch
-    ```
+
 
 ### CLI Command
-* Development server (`http://localhost:4200/`)
+* Development server (`http://localhost:4200/`):  
     ```
     ng serve
     ```
-* Build
+* Build:  
     ```
     ng build --prod
     ```
-* Unit test (Karma)
+* Unit test (Karma):  
     ```
     ng test
     ```
-* End-2-End Test (Protractor)
+* End-2-End Test (Protractor):  
     ```
     ng e2e
     ```
-* Generating NG Entity, e.g.
+* Generating NG Entity, e.g.  
     ```
     ng generate <entity-type> <path-name>/<entity-name>
     ```
     - path name is relative to "src/app" folder
-    - entity type can be one of the following: `directive|pipe|service|class|guard|interface|enum|module`
+    - entity type can be one of the following:  
+    `directive|pipe|service|class|guard|interface|enum|module`
 
 ### Folder Structure
     cli-patch/
