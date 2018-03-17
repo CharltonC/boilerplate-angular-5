@@ -16,5 +16,9 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "exclude": [
+    "cli-patch/@schematics/angular/**/files/__path__/*.ts",
+    "cli-patch/@schematics/angular/**/files/__path__/**/*.ts"
+  ]
 }
