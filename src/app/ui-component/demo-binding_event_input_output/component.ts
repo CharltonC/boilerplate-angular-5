@@ -1,14 +1,14 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 /**
- * Demo of Component's @Input & @Output Property
+ * Demo of Component's Binding, @Input, @Output, Event
  */
 @Component({
-    selector: 'app-demo2',
-    templateUrl: './demo2.component.pug',
-    styleUrls: ['./demo2.component.scss']
+    selector: 'app-demo-binding-event-input-output',
+    templateUrl: './component.pug',
+    styleUrls: ['./component.scss']
 })
-export class Demo2Component implements OnInit {
+export class DemoBindingEventInputOutputComponent implements OnInit {
     @Input() passedVal: string;
     @Output() customEvt: EventEmitter<any> = new EventEmitter <string>();
     boundProp = 'default1';

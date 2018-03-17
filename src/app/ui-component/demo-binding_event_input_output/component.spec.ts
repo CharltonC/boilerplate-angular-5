@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Demo2Component } from './demo2.component';
+import { DemoBindingEventInputOutputComponent } from './component';
 
-describe('Demo2Component', () => {
-    let cmpInst: Demo2Component;
-    let cmpFixture: ComponentFixture<Demo2Component>;
+describe('Component with Binding, Event, @Input, @Output', () => {
+    let cmpInst: DemoBindingEventInputOutputComponent;
+    let cmpFixture: ComponentFixture<DemoBindingEventInputOutputComponent>;
     let cmpHost, cmpInjector, cmpTplDivElem;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ Demo2Component ]
+            declarations: [ DemoBindingEventInputOutputComponent ]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        cmpFixture = TestBed.createComponent(Demo2Component);
+        cmpFixture = TestBed.createComponent(DemoBindingEventInputOutputComponent);
         cmpInst = cmpFixture.componentInstance;
         cmpFixture.detectChanges();
 

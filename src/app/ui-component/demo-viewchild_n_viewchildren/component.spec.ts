@@ -1,0 +1,54 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { DemoViewchildViewChildrenComponent } from './component';
+import { DummyDirective } from '../../../test-util/dummy-directive/dummy.directive';
+import { DummyComponent } from '../../../test-util/dummy-cmp/dummy.component';
+
+describe('Component with @ViewChild/@ViewChildren', () => {
+    let cmpInst: DemoViewchildViewChildrenComponent;
+    let cmpFixture: ComponentFixture<DemoViewchildViewChildrenComponent>;
+    let cmpHost;
+    let cmpTplElem;
+    let cmpInjector;
+
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                DemoViewchildViewChildrenComponent,
+                DummyDirective,
+                DummyComponent
+            ]
+        }).compileComponents();
+    }));
+
+    beforeEach(() => {
+        cmpFixture = TestBed.createComponent(DemoViewchildViewChildrenComponent);
+        cmpHost = cmpFixture.debugElement;
+        cmpInjector = cmpHost.injector;
+        cmpTplElem = cmpHost.nativeElement;
+        cmpInst = cmpFixture.componentInstance;
+        cmpFixture.detectChanges();
+    });
+
+    describe('Test with nested Dummy Component in Template', () => {
+        it('the nested component should be same as the one from @ViewChild & @ViewChildren', () => {
+            const dummyCmp = cmpHost.childNodes[0].childNodes[1].componentInstance;
+            expect(cmpInst.dummyCmp).toBe(dummyCmp);
+            expect(cmpInst.dummyCmps.first).toBe(dummyCmp);
+        });
+
+        it('should contain the text content of the nested component', () => {
+            const paragraphElem = cmpTplElem.querySelector('div');
+            expect(paragraphElem.textContent).toContain('dummy works!');
+        });
+    });
+
+    describe('Test with nested Dummy Directive in Template', () => {
+        it('the nested directive should be same as the one from @ViewChild & @ViewChildren', () => {
+            const dummyDirective = cmpHost.childNodes[0].injector.get(DummyDirective);
+            expect(cmpInst.dummyDirective).toBe(dummyDirective);
+            expect(cmpInst.dummyDirectives.first).toBe(dummyDirective);
+        });
+    });
+
+});

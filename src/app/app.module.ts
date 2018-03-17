@@ -24,9 +24,9 @@ import { DataCallService } from './service/demo-datacall/data-call.service';
 
 // General Components
 import { AppComponent } from './app.component';
-import { Demo2Component } from './ui-component/cmp/demo-binding_event_input_output/demo2.component';
-import { Demo3Component } from './ui-component/cmp/demo-viewchild_n_viewchildren/demo3.component';
-import { Demo5Component } from './ui-component/cmp/demo-contentchild_contentchildren/demo5.component';
+import { DemoBindingEventInputOutputComponent } from './ui-component/demo-binding_event_input_output/component';
+import { DemoViewchildViewChildrenComponent } from './ui-component/demo-viewchild_n_viewchildren/component';
+import { DemoContentchildContentChildrenComponent } from './ui-component/demo-contentchild_contentchildren/component';
 
 // General Pipe
 import { DemoPipe } from './pipe/demo/demo.pipe';
@@ -61,9 +61,9 @@ import { DummyDirective } from '../test-util/dummy-directive/dummy.directive';
         Viewtest1Component,
         Viewtest2Component,
         Viewtest3Component,
-        Demo2Component,
-        Demo3Component,
-        Demo5Component,
+        DemoBindingEventInputOutputComponent,
+        DemoViewchildViewChildrenComponent,
+        DemoContentchildContentChildrenComponent,
         TemplateFormComponent,
         ReactiveFormComponent,
         DemoInputValidatorDirective,

@@ -30,18 +30,4 @@ describe('AppComponent', () => {
     it('should create the app', () => {
         expect(cmpInst).toBeTruthy();
     });
-
-    it('should have as "title" property "app"', () => {
-        expect(cmpInst.title).toEqual('app');
-    });
-
-    it('should render title in a h1 tag', () => {
-        const h1ElemTxt = cmpTplDivElem.querySelector('h1').textContent;
-        expect(h1ElemTxt).toContain('lorem sum 123');
-    });
-
-    it('should contain the custom component element "<app-demo2>"', () => {
-        const totalElem = cmpTplDivElem.querySelectorAll('app-demo2').length;
-        expect(totalElem).toBe(1);
-    });
 });
