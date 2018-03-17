@@ -1,5 +1,5 @@
 {
-  "name": "ng5b",
+  "name": "ng-boilerplate",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -9,6 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "doc": "./node_modules/.bin/compodoc -p tsconfig.json",
     "cli-patch": "cp -r cli-patch/ node_modules/; find ./node_modules/@schematics/angular/component/ -name '*.html' -print0 | xargs -0 rm -rf"
   },
   "private": true,
@@ -30,6 +31,7 @@
     "@angular/cli": "1.6.6",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
+    "@compodoc/compodoc": "^1.0.5",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
