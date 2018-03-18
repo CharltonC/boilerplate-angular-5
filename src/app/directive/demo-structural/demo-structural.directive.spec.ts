@@ -11,8 +11,9 @@ describe('Demo for Structural Directive', () => {
         const viewContainer = { createEmbeddedView: (tf, context) => {} } as ViewContainerRef;
         const templateRef = {} as TemplateRef<any>;
 
+        const directive = new DemoStructuralDirective(viewContainer, templateRef);
+
         it('should create an instance', () => {
-            const directive = new DemoStructuralDirective(viewContainer, templateRef);
             expect(directive).toBeTruthy();
         });
     });

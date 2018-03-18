@@ -7,8 +7,9 @@ import { DummyComponent } from '../../../test-util/dummy-cmp/dummy-cmp.component
 describe('Demo for Directive with exportas', () => {
 
     describe('Test by Itself', () => {
+        const directive = new DemoExportasDirective();
+
         it('should create an instance', () => {
-            const directive = new DemoExportasDirective();
             expect(directive).toBeTruthy();
         });
     });

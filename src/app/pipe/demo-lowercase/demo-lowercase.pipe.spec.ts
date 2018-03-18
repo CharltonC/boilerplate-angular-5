@@ -4,12 +4,8 @@ import { DemoLowercasePipe } from './demo-lowercase.pipe';
 import { DummyComponent } from '../../../test-util/dummy-cmp/dummy-cmp.component';
 
 describe('Demo for Pipe', () => {
-    let pipe;
-
     describe('Test by Itself', () => {
-        beforeEach(() => {
-            pipe = new DemoLowercasePipe();
-        });
+        const pipe = new DemoLowercasePipe();
 
         it('should create an instance', () => {
             expect(pipe).toBeTruthy();

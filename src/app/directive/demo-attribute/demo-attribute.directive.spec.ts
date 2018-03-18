@@ -5,13 +5,9 @@ import { DemoAttributeDirective } from './demo-attribute.directive';
 import { DummyComponent } from '../../../test-util/dummy-cmp/dummy-cmp.component';
 
 describe('Demo for Attribute Directive (@HostBinding, @HostListener)', () => {
-    let directive;
-
-    beforeEach(() => {
-        directive = new DemoAttributeDirective();
-    });
-
     describe('Test by Itself', () => {
+        const directive = new DemoAttributeDirective();
+
         it('should create an instance', () => {
             expect(directive).toBeTruthy();
         });
