@@ -40,6 +40,7 @@ describe('Demo for Pipe', () => {
         });
 
         it('should contain converted lowercase `abc` in view', () => {
+            expect(/ABC/.test(cmpTplElem.textContent)).toBe(false);
             expect(cmpTplElem.textContent).toContain('abc');
         });
     });
