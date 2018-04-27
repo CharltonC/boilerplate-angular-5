@@ -43,7 +43,14 @@
     - validation (both built-in & cusstom)
     - model (both template-driven & reactive form)
 
-### Setup (Mac based)
+### Additional Setup for developing multiple Angular Apps (prior to Setup below)
+1. In Git/Sourcetree, Switch to "multiapp" branch first
+2. Run the patch for the CLI in Terminal:  
+    ```
+    npm run multiapp-patch
+    ```       
+
+### Setup (Mac based) 
 1. Install Node 6.9.0 or higher
 2. Install Homebrew
 3. Install Watchman in Terminal (for monitoring file changes):  
