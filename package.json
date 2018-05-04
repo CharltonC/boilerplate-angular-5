@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "doc": "./node_modules/.bin/compodoc -p tsconfig.json",
-    "cli-patch": "cp -r cli-patch/ node_modules/; find ./node_modules/@schematics/angular/component/ -name '*.html' -print0 | xargs -0 rm -rf"
+    "cli-patch": "cp -r cli-patch/ node_modules/; find ./node_modules/@schematics/angular/component/ -name '*.html' -print0 | xargs -0 rm -rf",
+    "dir-tree": "./node_modules/.bin/tree -l 10 --ignore 'node_modules, documentation, coverage'"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +47,7 @@
     "protractor": "~5.1.2",
     "pug": "^2.0.0-rc.4",
     "pug-html-loader": "^1.1.5",
+    "tree-cli": "^0.4.12",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
