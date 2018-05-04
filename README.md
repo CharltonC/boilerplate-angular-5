@@ -122,6 +122,10 @@
     ```
     npm run doc
     ```   
+* Generate Directory Tree (required to be copied from terminal upon generation & added to README):  
+    ```
+    npm run dir-tree
+    ```   
 
 ### Folder Structure
     cli-patch/
