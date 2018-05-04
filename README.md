@@ -61,15 +61,11 @@
     ```
     npm install -g @angular/cli typescript
     ```
-5. Under Project Root, install Jade/Pug in Terminal:  
-    ```
-    npm install --save-dev pug pug-html-loader
-    ```
-6. Under Project Root, Install the dependencies in Terminal:  
+5. Under Project Root, Install the dependencies in Terminal:  
     ```
     npm install
     ```
-7. Run the patch for the CLI:  
+6. Run the patch for the CLI:  
     ```
     npm run cli-patch
     ```  
