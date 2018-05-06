@@ -77,18 +77,18 @@
 
 ### VisualStudio Code Editor Setup
 * Go to Menu: Preference > Settings, in your user settings, make sure the settings has the following set:  
-    ```
-    {
-        ...
-        "tslint.rulesDirectory": "./node_modules/codelyzer",
-        "typescript.tsdk": "node_modules/typescript/lib",
-        "files.trimTrailingWhitespace": true,
-        "[markdown]": {
-            "files.trimTrailingWhitespace": false
-        }
-        
+```javascript
+{
+    ...
+    "tslint.rulesDirectory": "./node_modules/codelyzer",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
     }
-    ```
+    
+}
+```
 
 ### CLI Command
 * Development server (`http://localhost:4200/`):  
