@@ -7,7 +7,7 @@ describe('DummyContainerComponent', () => {
     let cmpFixture: ComponentFixture<DummyContainerComponent >,
         cmpHost: DebugElement,
         cmpInst: DummyContainerComponent,
-        cmpInjector: Injector,
+        // cmpInjector: Injector,
         cmpTplElem: any;
 
     beforeEach(async(() => {

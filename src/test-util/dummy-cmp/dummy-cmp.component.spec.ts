@@ -7,8 +7,8 @@ describe('DummyComponent', () => {
     let cmpFixture: ComponentFixture<DummyComponent >;
     let cmpInst: DummyComponent;
     let cmpHost,
-        cmpTplElem,
-        cmpInjector;
+        cmpTplElem;
+        // cmpInjector;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
