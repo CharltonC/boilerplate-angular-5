@@ -1,4 +1,4 @@
-form(novalidate, [formGroup]="fmGrpInst", (onSubmit)="fmGrpInst.value")
+form(novalidate, [formGroup]="fmGrpInst", (submit)="onSubmitHandler(fmGrpInst.value)")
     h2 reactive form demo
     button(type="submit") submit
     fieldset(formGroupName="grpCtrlName")

@@ -12,6 +12,7 @@ describe('Demo for Reactive Form Component', () => {
     let cmpHost: DebugElement;
     let cmpTplElem;
     let fmGrp: FormGroup;
+    let demoFormGroupService: DemoFormGroupService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -28,6 +29,8 @@ describe('Demo for Reactive Form Component', () => {
         cmpTplElem = cmpHost.nativeElement;
         fmGrp = cmpInst.fmGrpInst;
 
+        demoFormGroupService = TestBed.get(DemoFormGroupService);
+
         cmpFixture.detectChanges();
     });
 
@@ -35,6 +38,14 @@ describe('Demo for Reactive Form Component', () => {
         it('should create', () => {
             expect(cmpInst).toBeTruthy();
             expect(fmGrp).toBeTruthy();
+        });
+
+        it('should submit', () => {
+            spyOn(cmpInst, 'onSubmitHandler').and.callThrough();
+            cmpTplElem.querySelector('button[type=submit]').click();
+            cmpFixture.detectChanges();
+            expect(cmpInst.onSubmitHandler).toHaveBeenCalledWith(demoFormGroupService.model.value);
+            expect(cmpInst.onSubmitHandler).toHaveBeenCalledWith(fmGrp.value);
         });
     });
 

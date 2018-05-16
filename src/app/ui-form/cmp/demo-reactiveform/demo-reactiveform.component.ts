@@ -24,4 +24,7 @@ export class DemoReactiveFormComponent implements OnInit {
     ngOnInit() {
     }
 
+    onSubmitHandler(fmGrpVal) {
+    }
+
 }
