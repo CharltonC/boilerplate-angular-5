@@ -72,10 +72,10 @@ describe('Demo for Component with Binding, Event, @Input, @Output', () => {
     describe('Test @Output with a Container Component', () => {
         @Component({
             selector: 'app-mocked-component',
-            template: `<app-demo-binding-event-input-output (customEvt)="onCustomEvt()"></app-demo-binding-event-input-output>`
+            template: `<app-demo-binding-event-input-output (customEvt)="onCustomEvt($event)"></app-demo-binding-event-input-output>`
         })
         class MockedComponent {
-            onCustomEvt() {}
+            onCustomEvt($event) {}
         }
 
         let cmpInst: MockedComponent;
@@ -100,11 +100,11 @@ describe('Demo for Component with Binding, Event, @Input, @Output', () => {
             cmpFixture.detectChanges();
         });
 
-        it('...', () => {
+        it('should call the parent/container\'s handler with an argument', () => {
             spyOn(cmpInst, 'onCustomEvt').and.callThrough();
             childCmpInst.emitEvt();
             cmpFixture.detectChanges();
-            expect(cmpInst.onCustomEvt).toHaveBeenCalled();
+            expect(cmpInst.onCustomEvt).toHaveBeenCalledWith('new default2');
         });
     });
 
