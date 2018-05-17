@@ -1,0 +1,43 @@
+/* == GLOBAL == */
+    /* Font Import */
+    // @include font-face($font-file_sauna-bold, 'true');
+    // @include font-face($font-file_gotham-bold, 'true');
+    // @include font-face($font-file_gotham-medium, 'true');
+    // @include font-face($font-file_gotham-book, 'true');
+
+    /* Box Model reset */
+    body {
+        * { box-sizing: border-box; }
+    }
+
+    /* Text - Heading, Body, Error Text */
+    // .h-1 { @include text-header('h1'); }
+    // .h-2 { @include text-header('h2'); }
+    // .h-3 { @include text-header('h3'); }
+    // .h-4 { @include text-header('h4'); }
+    // .h-5 { @include text-header('h5'); }
+    // .b-1 { @include text-body('b1'); }
+    // .b-2 { @include text-body('b2'); }
+    // .b-3 { @include text-body('b3'); }
+    // .b-4 { @include text-body('b4'); }
+    // .b-5 { @include text-body('b5'); }
+    // .b-6 { @include text-body('b6'); }
+    // .b-err {
+    //     @include text-body('b1');
+    //     color: $red;
+    //     .c_icon + & { margin-left: 5px; }
+    // }
+
+    /* Generic */
+    .hidden { display: none; }
+
+    /* Bootstrap Override */
+    // body, a { color: $black; }
+    // ul {
+    //     margin-top: 0;
+    //     margin-bottom: 0;
+    // }
+    // input[type='radio'] { margin: 0; }
+    // .row { margin: 0; }
+
+
