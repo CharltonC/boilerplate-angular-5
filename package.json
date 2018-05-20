@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "doc": "./node_modules/.bin/compodoc -p tsconfig.json",
-    "cli-patch": "cp -r cli-patch/ node_modules/; find ./node_modules/@schematics/angular/component/ -name '*.html' -print0 | xargs -0 rm -rf",
+    "patch-cli": "cp -r patch/ng-cli/ node_modules/; find ./node_modules/@schematics/angular/component/ -name '*.html' -print0 | xargs -0 rm -rf",
     "dir-tree": "./node_modules/.bin/tree -l 10 --ignore 'node_modules, documentation, coverage'"
   },
   "private": true,

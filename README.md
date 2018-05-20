@@ -63,7 +63,7 @@
     ```
 6. Run the patch for the CLI:  
     ```
-    npm run cli-patch
+    npm run patch-cli
     ```  
     so that:  
     - the Scss has sourcemap
@@ -124,7 +124,8 @@
     ```   
 
 ### Folder Structure
-    cli-patch/
+    patch/
+        ng-cli/
     src/
         test-util/              // dummy components, directives that can be overidden/used in testing
         scss/                   // scss files
