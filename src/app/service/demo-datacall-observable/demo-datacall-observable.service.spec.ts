@@ -3,7 +3,10 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { HttpClient, HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { DemoDataCallService } from './demo-datacall.service';
+// Note in new version `of` is imported from 'rxjs/operators'
+import { of } from 'rxjs/observable/of';
+
+import { DemoDataCallService } from './demo-datacall-observable.service';
 
 /**
  * Note:
@@ -11,6 +14,7 @@ import { DemoDataCallService } from './demo-datacall.service';
  */
 describe('Demo for Data Fetch Service', () => {
     let dataCallServ;
+    let http: HttpClient;
 
     // Mocked Component
     @Component({
@@ -20,7 +24,11 @@ describe('Demo for Data Fetch Service', () => {
     class MockedComponent implements OnInit {
         jsonProp: object;
         jsonpProp: object;
+        jsonPropAsObsv: object;
+        jsonpPropAsObsv: object;
+
         constructor(private dataCall: DemoDataCallService) { }
+
         ngOnInit() {
             this.dataCall.getJsonData().then(data => {
                 this.jsonProp = data;
@@ -28,8 +36,15 @@ describe('Demo for Data Fetch Service', () => {
             this.dataCall.getJsonpData().then(data => {
                 this.jsonpProp = data;
             });
+            this.dataCall.getJsonDataAsObservable().subscribe(data => {
+                this.jsonPropAsObsv = data;
+            });
+            this.dataCall.getJsonpDataAsObservable().subscribe(data => {
+                this.jsonpPropAsObsv = data;
+            });
         }
     }
+    // - End Mocked Component
 
     beforeEach(async(() => {
         // Config Test
@@ -41,19 +56,19 @@ describe('Demo for Data Fetch Service', () => {
 
         // Get Service
         dataCallServ = TestBed.get(DemoDataCallService);
+        http = TestBed.get(HttpClient);
     }));
 
-    describe('Test by Itself', () => {
+    describe('Test by itself', () => {
         it('should be created', () => {
             expect(dataCallServ).toBeTruthy();
         });
     });
 
-    describe('Test returned data via Mocked Promise', () => {
+    describe('Test returned data via Mocked Promise/Observable', () => {
         const mockedJsonData = { id: 1, name: 'john' };
-        const mockedPromise = new Promise(resolve => {
-            resolve(mockedJsonData);
-        });
+        const mockedPromise = new Promise(resolve => resolve(mockedJsonData));
+        const mockedObservable = of(mockedJsonData);
 
         it('should return a resolved mocked promise with mocked json data', done => {
             spyOn(dataCallServ, 'getJsonData').and.returnValue(mockedPromise);
@@ -62,6 +77,14 @@ describe('Demo for Data Fetch Service', () => {
                 expect(jsonData.id).toBe(mockedJsonData.id);
                 expect(jsonData.name).toBe(mockedJsonData.name);
                 done();
+            });
+        });
+
+        it('should return a mocked observable with mocked json data', () => {
+            spyOn(http, 'get').and.returnValue(mockedObservable);
+
+            dataCallServ.getJsonDataAsObservable().subscribe((emittedVal) => {
+                expect(emittedVal).toBe(mockedJsonData);
             });
         });
     });
@@ -80,7 +103,7 @@ describe('Demo for Data Fetch Service', () => {
             mockedBackend.verify();
         });
 
-        it('should resolve with mocked jsonp data', done => {
+        it('Promise based: should resolve with mocked jsonp data', done => {
             dataCallServ.getJsonData(mockedUrl).then((data) => {
                 expect(data).toBe(mockedJsonpData);
             });
@@ -93,7 +116,7 @@ describe('Demo for Data Fetch Service', () => {
             done();
         });
 
-        it('should reject with error msg', done => {
+        it('Promise based: should reject with error msg', done => {
             dataCallServ.getJsonData(mockedUrl).then((data) => {}, (errResp) => {
                 expect(errResp.status).toEqual(404, 'status');
                 expect(errResp.error).toEqual(mockedFailErrMsg, 'message');
@@ -106,12 +129,40 @@ describe('Demo for Data Fetch Service', () => {
             mockedReq.flush(mockedFailErrMsg, { status: 404, statusText: 'Not Found' });
             done();
         });
+
+        it('Observable based: should resolve with mocked jsonp data', () => {
+            dataCallServ.getJsonDataAsObservable(mockedUrl).subscribe((data) => {
+                expect(data).toBe(mockedJsonpData);
+            });
+
+            const mockedReq = mockedBackend.expectOne(mockedUrl);
+            expect(mockedReq.request.method).toBe('GET');
+            expect(mockedReq.request.responseType).toEqual('json');
+
+            mockedReq.flush(mockedJsonpData);
+        });
+
+        it('Observable based: should reject with error msg', () => {
+            dataCallServ.getJsonDataAsObservable(mockedUrl).subscribe((data) => {}, (errResp) => {
+                expect(errResp.status).toEqual(404, 'status');
+                expect(errResp.error).toEqual(mockedFailErrMsg, 'message');
+            });
+
+            const mockedReq = mockedBackend.expectOne(mockedUrl);
+            expect(mockedReq.request.method).toBe('GET');
+            expect(mockedReq.request.responseType).toEqual('json');
+
+            mockedReq.flush(mockedFailErrMsg, { status: 404, statusText: 'Not Found' });
+        });
     });
 
-    describe('Test with Component and mocked Promise', () => {
-        let cmpFixture: ComponentFixture<MockedComponent>,
-            cmpInst: MockedComponent,
-            spyJson, spyJsonp;
+    describe('Test with Component and mocked Promise/Observable', () => {
+        let cmpFixture: ComponentFixture<MockedComponent>;
+        let cmpInst: MockedComponent;
+        let spyJson: jasmine.Spy;
+        let spyJsonp: jasmine.Spy;
+        let spyJsonAsObservable: jasmine.Spy;
+        let spyJsonpAsObservable: jasmine.Spy;
 
         const mockedJson = {txt: 'json-data'};
 
@@ -121,11 +172,13 @@ describe('Demo for Data Fetch Service', () => {
 
             spyJson = spyOn(dataCallServ, 'getJsonData').and.returnValue(Promise.resolve(mockedJson));
             spyJsonp = spyOn(dataCallServ, 'getJsonpData').and.returnValue(Promise.resolve(mockedJson));
+            spyJsonAsObservable = spyOn(dataCallServ, 'getJsonDataAsObservable').and.returnValue(of(mockedJson));
+            spyJsonpAsObservable = spyOn(dataCallServ, 'getJsonpDataAsObservable').and.returnValue(of(mockedJson));
 
             cmpFixture.detectChanges();
         });
 
-        it('should assign `jsonProp` property with json data at ngOnInit', done => {
+        it('Promise based: should assign `jsonProp` property with json data at ngOnInit', done => {
             spyJson.calls.mostRecent().returnValue.then(() => {
                 cmpFixture.detectChanges();
                 expect(cmpInst.jsonProp).toBe(mockedJson);
@@ -133,12 +186,27 @@ describe('Demo for Data Fetch Service', () => {
             });
         });
 
-        it('should assign `jsonpProp` property with jsonp data at ngOnInit', done => {
+        it('Promise based: should assign `jsonpProp` property with jsonp data at ngOnInit', done => {
             spyJsonp.calls.mostRecent().returnValue.then(() => {
                 cmpFixture.detectChanges();
                 expect(cmpInst.jsonpProp).toBe(mockedJson);
                 done();
             });
         });
+
+        it('Observable based: should assign `jsonPropAsObsv` property with json data at ngOnInit', () => {
+            spyJsonAsObservable.calls.mostRecent().returnValue.subscribe(() => {
+                cmpFixture.detectChanges();
+                expect(cmpInst.jsonPropAsObsv).toBe(mockedJson);
+            });
+        });
+
+        it('Observable based: should assign `jsonpPropAsObsv` property with jsonp data at ngOnInit', () => {
+            spyJsonpAsObservable.calls.mostRecent().returnValue.subscribe(() => {
+                cmpFixture.detectChanges();
+                expect(cmpInst.jsonpPropAsObsv).toBe(mockedJson);
+            });
+        });
     });
+
 });

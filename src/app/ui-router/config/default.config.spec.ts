@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Location, APP_BASE_HREF } from '@angular/common';
 
 import { ROUTES_CONFIG } from './default.config';
-import { DemoDataCallService } from '../../service/demo-datacall/demo-datacall.service';
+import { DemoDataCallService } from '../../service/demo-datacall-observable/demo-datacall-observable.service';
 import { DemoDataCallResolverService } from '../guard/demo-datacall-resolver/demo-datacall-resolver.service';
 
 import { AppComponent } from '../../app.component';

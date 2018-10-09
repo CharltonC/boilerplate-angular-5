@@ -17,4 +17,11 @@ export class DemoDataCallService {
         return this.http.jsonp(url ? url : jsonpUrl, 'callback').toPromise();
     }
 
+    getJsonDataAsObservable(url?: string) {
+        return this.http.get(url ? url : jsonUrl);
+    }
+
+    getJsonpDataAsObservable(url?: string) {
+        return this.http.jsonp(url ? url : jsonpUrl, 'callback');
+    }
 }

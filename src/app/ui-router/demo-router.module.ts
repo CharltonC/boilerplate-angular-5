@@ -8,7 +8,7 @@ import { ROUTES_CONFIG } from './config/default.config';
 import { DemoDataCallResolverService } from './guard/demo-datacall-resolver/demo-datacall-resolver.service';
 
 // General Service
-import { DemoDataCallService } from './../service/demo-datacall/demo-datacall.service';
+import { DemoDataCallService } from './../service/demo-datacall-observable/demo-datacall-observable.service';
 
 // View
 import { DemoView1Component } from './view/demo-view1/demo-view1.component';

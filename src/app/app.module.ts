@@ -10,7 +10,7 @@ import { DemoRouterModule } from './ui-router/demo-router.module';
 import { DemoFormModule } from './ui-form/demo-form.module';
 
 // General Service
-import { DemoDataCallService } from './service/demo-datacall/demo-datacall.service';
+import { DemoDataCallService } from './service/demo-datacall-observable/demo-datacall-observable.service';
 
 // General Components
 import { AppComponent } from './app.component';
