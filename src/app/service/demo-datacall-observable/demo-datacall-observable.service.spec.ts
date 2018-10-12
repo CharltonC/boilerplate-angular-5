@@ -70,7 +70,7 @@ describe('Demo for Data Fetch Service', () => {
         const mockedPromise = new Promise(resolve => resolve(mockedJsonData));
         const mockedObservable = of(mockedJsonData);
 
-        it('should return a resolved mocked promise with mocked json data', done => {
+        it('should return mocked json data from mocked resolved promise', done => {
             spyOn(dataCallServ, 'getJsonData').and.returnValue(mockedPromise);
 
             dataCallServ.getJsonData().then(jsonData => {
@@ -80,7 +80,7 @@ describe('Demo for Data Fetch Service', () => {
             });
         });
 
-        it('should return a mocked observable with mocked json data', () => {
+        it('should return mocked json data from mocked observable', () => {
             spyOn(http, 'get').and.returnValue(mockedObservable);
 
             dataCallServ.getJsonDataAsObservable().subscribe((emittedVal) => {
@@ -91,7 +91,7 @@ describe('Demo for Data Fetch Service', () => {
 
     describe('Test returned data via Mocked Backend', () => {
         const mockedUrl = 'http://lorem.sum';
-        const mockedJsonpData = { id: 1, name: 'john' };
+        const mockedJsonData = { id: 1, name: 'john' };
         const mockedFailErrMsg = 'CALL ERROR';
         let mockedBackend;
 
@@ -103,16 +103,16 @@ describe('Demo for Data Fetch Service', () => {
             mockedBackend.verify();
         });
 
-        it('Promise based: should resolve with mocked jsonp data', done => {
+        it('Promise based: should resolve with mocked json data', done => {
             dataCallServ.getJsonData(mockedUrl).then((data) => {
-                expect(data).toBe(mockedJsonpData);
+                expect(data).toBe(mockedJsonData);
             });
 
             const mockedReq = mockedBackend.expectOne(mockedUrl);
             expect(mockedReq.request.method).toBe('GET');
             expect(mockedReq.request.responseType).toEqual('json');
 
-            mockedReq.flush(mockedJsonpData);
+            mockedReq.flush(mockedJsonData);
             done();
         });
 
@@ -130,16 +130,16 @@ describe('Demo for Data Fetch Service', () => {
             done();
         });
 
-        it('Observable based: should resolve with mocked jsonp data', () => {
+        it('Observable based: should resolve with mocked json data', () => {
             dataCallServ.getJsonDataAsObservable(mockedUrl).subscribe((data) => {
-                expect(data).toBe(mockedJsonpData);
+                expect(data).toBe(mockedJsonData);
             });
 
             const mockedReq = mockedBackend.expectOne(mockedUrl);
             expect(mockedReq.request.method).toBe('GET');
             expect(mockedReq.request.responseType).toEqual('json');
 
-            mockedReq.flush(mockedJsonpData);
+            mockedReq.flush(mockedJsonData);
         });
 
         it('Observable based: should reject with error msg', () => {
@@ -175,6 +175,7 @@ describe('Demo for Data Fetch Service', () => {
             spyJsonAsObservable = spyOn(dataCallServ, 'getJsonDataAsObservable').and.returnValue(of(mockedJson));
             spyJsonpAsObservable = spyOn(dataCallServ, 'getJsonpDataAsObservable').and.returnValue(of(mockedJson));
 
+            // This will trigger the lifecycle init methods in component which calls the data fetch methods
             cmpFixture.detectChanges();
         });
 
