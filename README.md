@@ -26,7 +26,7 @@
     - directive which is exported via `exportas`
 
 * Service
-    - async data fetching (promsie based)
+    - async data fetching (both promsie and observable based scenarios)
 
 * Pipe
     - simple transform uppercase to lowercase
