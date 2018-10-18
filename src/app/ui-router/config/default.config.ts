@@ -26,7 +26,6 @@ export const ROUTES_CONFIG: Routes = [
     },
     {
         path: '**',
-        redirectTo: '',
-        component: DemoView1Component
+        redirectTo: ''
     }
 ];
