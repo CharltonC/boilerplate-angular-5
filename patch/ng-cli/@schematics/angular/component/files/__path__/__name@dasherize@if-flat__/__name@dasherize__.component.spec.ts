@@ -4,11 +4,11 @@ import { NO_ERRORS_SCHEMA, DebugElement, Injector } from '@angular/core';
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
 
 describe('<%= classify(name) %>Component', () => {
-    let cmpFixture: ComponentFixture<<%= classify(name) %>Component >,
-        cmpHost: DebugElement,
-        cmpInst: <%= classify(name) %>Component,
-        cmpInjector: Injector,
-        cmpTplElem: any;
+    let cmpFixture: ComponentFixture<<%= classify(name) %>Component>;
+    let cmpHost: DebugElement;
+    let cmpInst: <%= classify(name) %>Component;
+    let cmpInjector: Injector;
+    let cmpTplElem: any;
 
     beforeEach(async(() => {
         // Note `.compileComponents()` is for external html file only (not required for inline)
