@@ -43,8 +43,6 @@
     - validation (both built-in & cusstom)
     - model (both template-driven & reactive form)
 
-### Initial Setup for developing multiple Angular Apps Project OR Combination of Angular + Static Project
-1. Prior to Setup below in Git/Sourcetree, Switch to "multiapp" or "multiapp-with-static" branch    
 
 ### Setup (Mac based) 
 1. Install Node 6.9.0 or higher
@@ -81,8 +79,7 @@
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
         "files.trimTrailingWhitespace": false
-    }
-    
+    }    
 }
 ```
 
