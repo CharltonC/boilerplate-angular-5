@@ -32,6 +32,8 @@ import { DummyComponent } from '../test-util/dummy-cmp/dummy-cmp.component';
 import { DummyContainerComponent } from '../test-util/dummy-cmp-container/dummy-cmp-container.component';
 import { DummyDirective } from '../test-util/dummy-dir/dummy-dir.directive';
 
+import { DemoNgrxModule } from './redux/demo/reducer';
+import { DemoNgrxComponent } from './ui-component/demo-ngrx/demo-ngrx.component';
 
 @NgModule({
     imports: [
@@ -39,7 +41,8 @@ import { DummyDirective } from '../test-util/dummy-dir/dummy-dir.directive';
         HttpClientModule,
         HttpClientJsonpModule,
         DemoFormModule,
-        DemoRouterModule
+        DemoRouterModule,
+        DemoNgrxModule
     ],
     providers: [
         DemoDataCallService
@@ -64,6 +67,9 @@ import { DummyDirective } from '../test-util/dummy-dir/dummy-dir.directive';
         DummyDirective,
         DummyComponent,
         DummyContainerComponent,
+
+        // ngrx
+        DemoNgrxComponent,
     ],
     bootstrap: [ AppComponent ]
 })
