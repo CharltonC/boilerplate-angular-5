@@ -6,6 +6,7 @@ import { ACTION } from './action.constant';
 const { SET_A, SET_B, SET_C } = ACTION;
 
 const testReducer1 = (state: ITestState = defTestState, action: Action): ITestState => {
+    window.console.log('reducer');
     switch (action.type) {
         case SET_A:
             return { propName: 'A' };
