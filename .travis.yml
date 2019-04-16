@@ -1,0 +1,10 @@
+language: javascript
+
+node:
+  - "11.4.0"
+
+install:
+  - npm install
+
+script:
+  - ng test
