@@ -11,7 +11,8 @@ install:
   - npm install
 
 before_script:
-  - cp -rf ./patch/ng-cli/ ./node_modules/
+  - cat ./patch/ng-cli/@angular/cli/models/webpack-configs/common.js
+  - cp -rf ./patch/ng-cli/@angular/cli/models/webpack-configs/common.js ./node_modules/@angular/cli/models/webpack-configs/
 
 script:
   - cat ./node_modules/@angular/cli/models/webpack-configs/common.js
