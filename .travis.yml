@@ -6,11 +6,15 @@ node_js:
 
 cache: npm
 
+# Not required to install global dependency, e.g. angular-cli
 install:
   - npm install
 
 before_script:
-  - npm run patch-cli
+  - cp -r ./patch/ng-cli/ ./node_modules/
+  - cat ./node_modules/@angular/cli/models/webpack-configs/common.js
+  - cp -r /home/travis/build/CharltonC/boilerplate-angular-5-demo/patch/ng-cli/ /home/travis/build/CharltonC/boilerplate-angular-5-demo/node_modules/
+  - cat ./node_modules/@angular/cli/models/webpack-configs/common.js
 
 script:
   - cat ./node_modules/@angular/cli/models/webpack-configs/common.js
