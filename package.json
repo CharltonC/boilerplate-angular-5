@@ -11,6 +11,7 @@
     "e2e": "ng e2e",
     "doc": "./node_modules/.bin/compodoc -p tsconfig.json",
     "patch-cli": "cp -r ./patch/ng-cli/ ./node_modules/; find ./node_modules/@schematics/angular/component/ -name '*.html' -print0 | xargs -0 rm -rf",
+    "patch-cli-ci-only": "cp -rf ./patch/ng-cli/@angular/cli/models/webpack-configs/common.js ./node_modules/@angular/cli/models/webpack-configs/",
     "dir-tree": "./node_modules/.bin/tree -l 10 --ignore 'node_modules, documentation, coverage'"
   },
   "private": true,

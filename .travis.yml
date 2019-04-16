@@ -11,11 +11,10 @@ install:
   - npm install
 
 before_script:
-  - cat ./patch/ng-cli/@angular/cli/models/webpack-configs/common.js
-  - cp -rf ./patch/ng-cli/@angular/cli/models/webpack-configs/common.js ./node_modules/@angular/cli/models/webpack-configs/
+  - npm run patch-cli-ci-only
 
 script:
-  - cat ./node_modules/@angular/cli/models/webpack-configs/common.js
+  - ng test --single-run
 
 addons:
   chrome: stable
