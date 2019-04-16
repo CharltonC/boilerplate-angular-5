@@ -2,7 +2,10 @@
 language: javascript
 
 node:
-  - "11.4.0"
+  - "6.9.4"
+
+cache:
+  - npm
 
 install:
   - npm install -g @angular/cli@1.6.6 typescript@2.5.3
