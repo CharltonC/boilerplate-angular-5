@@ -14,7 +14,7 @@ before_script:
   - npm run patch-cli-ci-only
 
 script:
-  - ng test --single-run
+  - ng test
 
 addons:
   chrome: stable
