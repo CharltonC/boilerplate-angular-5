@@ -1,6 +1,8 @@
 # Angular 5 Boilerplate
 > demo of most common usage of angular with unit tests such as component, service, directive, pipe, router, form
 
+[![Build Status](https://travis-ci.com/CharltonC/boilerplate-angular-5-demo.svg?branch=master)](https://travis-ci.com/CharltonC/boilerplate-angular-5-demo)
+
 #### Table of Contents
 * About
     * Frontend Stack used in this Boilerplate
