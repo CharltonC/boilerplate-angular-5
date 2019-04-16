@@ -14,7 +14,7 @@ before_script:
   - npm run patch-cli
 
 script:
-  - ng test
+  - cat ./node_modules/@angular/cli/models/webpack-configs/common.js
 
 addons:
   chrome: stable
