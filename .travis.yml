@@ -10,8 +10,8 @@ install:
   - npm install -g @angular/cli@1.6.6 typescript@2.5.3
   - npm install
 
-# before_script:
-#   - npm run patch-cli
+before_script:
+  - npm run patch-cli
 
 script:
   - ng test
